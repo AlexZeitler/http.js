@@ -11,6 +11,8 @@ html
     p Please open your browser's JavaScript console and check out the source of this page.
 
     script(type='text/javascript').
+      http.auth('golo', 'golo');
+
       http.get('/text', function (status, data) {
         console.log('GET /text: ' + status + ' => ' +  data.text());
       });
@@ -21,4 +23,8 @@ html
 
       http.post('/json', {foo: 'bar'}, function (status, data) {
         console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
+      });
+
+      http.get('/text/auth', function (status, data) {
+        console.log('GET /text/auth: ' + status + ' => ' +  data.text());
       });

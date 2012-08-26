@@ -31,10 +31,10 @@
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
     input = escape(input);
-    var output = '';
-    var chr1, chr2, chr3 = '';
-    var enc1, enc2, enc3, enc4 = '';
-    var i = 0;
+    var output = '',
+        chr1, chr2, chr3,
+        enc1, enc2, enc3, enc4,
+        i = 0;
 
     do {
       chr1 = input.charCodeAt(i++);
@@ -86,7 +86,7 @@
       xhr.open(method, url);
 
       if(ajax.auth) {
-        xhr.setRequestHeader('Authorization', ajax.auth);
+        xhr.setRequestHeader('Authorization', 'Basic ' + base64(ajax.auth.username + ':' + ajax.auth.password));
       }
 
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -134,7 +134,10 @@
     },
 
     auth: function (username, password) {
-      ajax.auth = 'Basic ' + base64(username + ':' + password);
+      ajax.auth = {
+        username: username,
+        password: password
+      };
     }
   };
 
