@@ -17,14 +17,14 @@
       return data;
     }
 
-    var result = '';
+    var result = [];
     for(var dataItem in data) {
       if(data.hasOwnProperty(dataItem)) {
-        result += '&' + encodeURIComponent(dataItem) + '=' + encodeURIComponent(data[dataItem]);
+        result.push(encodeURIComponent(dataItem) + '=' + encodeURIComponent(data[dataItem]));
       }
     }
 
-    return result;
+    return result.join('&')
   }
 
   var ajax = function (method, url, data, headers, callback) {
