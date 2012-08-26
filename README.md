@@ -27,6 +27,7 @@ The optional `options` parameter allows you to send additional information. It u
 
 ```javascript
 {
+  cache,
   data,
   headers
 }
