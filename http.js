@@ -50,7 +50,7 @@
           payload = null;
         }
 
-        if(!cache) {
+        if(!options.cache) {
           queryString.push('_=' + Date.getTime());
         }
 
