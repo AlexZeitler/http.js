@@ -22,7 +22,14 @@ html
       });
 
       http.post('/json', {
-        data: {foo: 'bar'}
+        accepts: 'application/json',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: {
+          foo: 'bar'
+        },
+        headers: {
+          'created-by': 'http.js'
+        }
       }, function (status, data) {
         console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
       });
