@@ -18,13 +18,18 @@ Now you are able to send AJAX requests. All you need to do is access the `http` 
   <tr><td>http.post(url, data, headers, callback)</td><td>Sends a POST request to the specified url.</td></tr>
   <tr><td>http.put(url, data, headers, callback)</td><td>Sends a PUT request to the specified url.</td></tr>
   <tr><td>http.delete(url, data, headers, callback)</td><td>Sends a DELETE request to the specified url.</td></tr>
+  <tr><td>http.auth(username, password)</td><td>Sets credentials that are to be used for each request.</td></tr>
 </table>
+
+### Sending data
 
 The `data` parameter allows you to send additional information, using either a string or an object. When sending
 a GET request, the `data` parameter is sent using the query string, otherwise it is transferred hidden within the
 request's body.
 
 Both the `data` and `headers` parameters are optional.
+
+### Handling the result
 
 Once the result has been received, the specified `callback` function is called. Its `data` parameter provides two
 functions, `text` and `json` which return the result in the desired format:
@@ -39,6 +44,14 @@ http.get('/json', function (status, data) {
   console.log('HTTP status code: ' + status);
   console.log('Data (as JSON):   ' + data.json());
 });
+```
+
+### Authentication
+
+If necessary you can use the `auth` function to set credentials once that are then used for each request:
+
+```javascript
+http.auth('golo', 'secret');
 ```
 
 That's it :-)!
