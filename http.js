@@ -51,7 +51,7 @@
         }
 
         if(!options.cache) {
-          queryString.push('_=' + Date.getTime());
+          queryString.push('_=' + (new Date()).getTime());
         }
 
         url += '?' + queryString.join('&');
