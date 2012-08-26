@@ -58,6 +58,10 @@ app.post('/json', function (req, res, next) {
   });
 });
 
+app.get('/jsonp', function (req, res, next) {
+  res.send((req.query['callback'] || req.query['jsonp']) + '(\'http.js\');');
+});
+
 app.get('/auth/basic', passport.authenticate('basic', { session: false }), function (req, res, next) {
   res.send('http.js with HTTP Basic authentication');
 });
