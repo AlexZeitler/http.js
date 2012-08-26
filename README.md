@@ -38,6 +38,15 @@ The meaning and usage of the individual parameters is as follows:
   <tr><th>Property</th><th>Type(s)</th><th>Usage</th><th>Default</th></tr>
   <tr><th colspan="4">Description</th></tr>
   <tr>
+    <td>cache</td><td>boolean</td><td>optional</td><td>false</td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      This property decides whether the response may be cached by the browser or not. By default, caching is
+      avoided by sending a query string containing the current date and time.
+    </td>
+  </tr>
+  <tr>
     <td>data</td><td>string, object</td><td>optional</td><td>-</td>
   </tr>
   <tr>

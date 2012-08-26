@@ -33,6 +33,7 @@
       options = {};
     }
 
+    options.cache = options.cache || false;
     options.data = options.data || {};
     options.headers = options.headers || {};
     options.headers['accept'] = options.headers['accept'] || '*/*';
@@ -42,10 +43,21 @@
       if(err) return callback(err);
 
       var payload = encode(options.data);
-      if(method === 'GET' && payload) {
-        url += '?' + payload;
-        payload = null;
+      if(method === 'GET') {
+        var queryString = [];
+        if(payload) {
+          queryString.push(payload);
+          payload = null;
+        }
+
+        if(!cache) {
+          queryString.push('_=' + Date.getTime());
+        }
+
+        url += '?' + queryString.join('&');
       }
+
+      if(method === 'GET')
 
       if(ajax.auth) {
         xhr.withCredentials = true;
