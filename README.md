@@ -21,7 +21,7 @@ Now you are able to send AJAX requests. All you need to do is access the `http` 
   <tr><td>http.auth(username, password)</td><td>Sets credentials that are to be used for each request.</td></tr>
 </table>
 
-### Sending data
+### Sending additional data
 
 The optional `options` parameter allows you to send additional information. It uses the following structure:
 
