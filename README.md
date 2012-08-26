@@ -14,20 +14,43 @@ Now you are able to send AJAX requests. All you need to do is access the `http` 
 
 <table>
   <tr><th>Function</th><th>Description</th></tr>
-  <tr><td>http.get(url, data, headers, callback)</td><td>Sends a GET request to the specified url.</td></tr>
-  <tr><td>http.post(url, data, headers, callback)</td><td>Sends a POST request to the specified url.</td></tr>
-  <tr><td>http.put(url, data, headers, callback)</td><td>Sends a PUT request to the specified url.</td></tr>
-  <tr><td>http.delete(url, data, headers, callback)</td><td>Sends a DELETE request to the specified url.</td></tr>
+  <tr><td>http.get(url, options, callback)</td><td>Sends a GET request to the specified url.</td></tr>
+  <tr><td>http.post(url, options, callback)</td><td>Sends a POST request to the specified url.</td></tr>
+  <tr><td>http.put(url, options, callback)</td><td>Sends a PUT request to the specified url.</td></tr>
+  <tr><td>http.delete(url, options, callback)</td><td>Sends a DELETE request to the specified url.</td></tr>
   <tr><td>http.auth(username, password)</td><td>Sets credentials that are to be used for each request.</td></tr>
 </table>
 
 ### Sending data
 
-The `data` parameter allows you to send additional information, using either a string or an object. When sending
-a GET request, the `data` parameter is sent using the query string, otherwise it is transferred hidden within the
-request's body.
+The optional `options` parameter allows you to send additional information. It uses the following structure:
 
-Both the `data` and `headers` parameters are optional.
+```javascript
+{
+  data,
+  headers
+}
+```
+
+The meaning and usage of the individual parameters is as follows:
+
+<table>
+  <tr><th>Property</th><th>Type</th><th>Usage</th><th>Description</th></tr>
+  <tr>
+    <td>data</td><td>string / object</td><td>optional</td>
+    <td>
+      The `data` property contains additional data that is to be sent to the server. In GET requests, the
+      `data` property is sent using the query string, otherwise it is transferred hidden within the request's
+      body.
+    </td>
+  </tr>
+  <tr>
+    <td>headers</td><td>object</td><td>optional</td>
+    <td>
+      The `headers` property contains arbitrary headers that shall be sent.
+    </td>
+  </tr>
+</table>
 
 ### Handling the result
 
