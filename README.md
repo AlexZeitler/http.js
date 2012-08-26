@@ -72,7 +72,7 @@ The meaning and usage of the individual parameters is as follows:
     </td>
   </tr>
   <tr>
-    <td>jsonp</td><td>string</td><td>optional</td><td>''</td>
+    <td>jsonp</td><td>string</td><td>optional</td><td>-</td>
   </tr>
   <tr>
     <td colspan="4">
