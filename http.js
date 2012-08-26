@@ -1,5 +1,3 @@
-// The functions utf8 and base64 are based upon http://www.webtoolkit.info/javascript-base64.html.
-
 (function (root) {
   var getXhr = function (callback) {
     if (window.XMLHttpRequest) {
