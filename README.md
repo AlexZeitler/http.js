@@ -27,8 +27,6 @@ The optional `options` parameter allows you to send additional information. It u
 
 ```javascript
 {
-  accepts,
-  contentType,
   data,
   headers
 }
