@@ -27,6 +27,7 @@ The optional `options` parameter allows you to send additional information. It u
 
 ```javascript
 {
+  contentType,
   data,
   headers
 }
@@ -36,12 +37,12 @@ The meaning and usage of the individual parameters is as follows:
 
 <table>
   <tr><th>Property</th><th>Type(s)</th><th>Usage</th><th>Default</th></tr>
-  <tr><th>Description</th></tr>
+  <tr><th colspan="4">Description</th></tr>
   <tr>
     <td>contentType</td><td>string</td><td>optional</td><td>application/x-www-form-urlencoded;charset=UTF-8</td>
   </tr>
   <tr>
-    <td>
+    <td colspan="4">
       This property contains the content-type that shall be sent.
     </td>
   </tr>
@@ -49,7 +50,7 @@ The meaning and usage of the individual parameters is as follows:
     <td>data</td><td>string, object</td><td>optional</td><td>-</td>
   </tr>
   <tr>
-    <td>
+    <td colspan="4">
       This property contains additional data that is to be sent to the server. In GET requests, this property is
       sent using the query string, otherwise it is transferred hidden within the request's body.
     </td>
@@ -58,7 +59,7 @@ The meaning and usage of the individual parameters is as follows:
     <td>headers</td><td>object</td><td>optional</td><td>-</td>
   </tr>
   <tr>
-    <td>
+    <td colspan="4">
       This property contains arbitrary headers that shall be sent.
     </td>
   </tr>
