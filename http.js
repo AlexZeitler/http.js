@@ -38,25 +38,38 @@
     options.headers = options.headers || {};
     options.headers['accept'] = options.headers['accept'] || '*/*';
     options.headers['content-type'] = options.headers['content-type'] || 'application/x-www-form-urlencoded;charset=UTF-8';
+    options.jsonp = options.jsonp || false;
+
+    var payload = encode(options.data);
+    if(method === 'GET') {
+      var queryString = [];
+      if(payload) {
+        queryString.push(payload);
+        payload = null;
+      }
+
+      if(!options.cache) {
+        queryString.push('_=' + (new Date()).getTime());
+      }
+      if(options.jsonp) {
+        queryString.push('callback=' + options.jsonp);
+        queryString.push('jsonp=' + options.jsonp);
+      }
+      queryString = '?' + queryString.join('&');
+      url += queryString !== '?' ? queryString : '';
+
+      if(options.jsonp) {
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        head.appendChild(script);        
+        return;
+      }
+    }
 
     getXhr(function (err, xhr) {
       if(err) return callback(err);
-
-      var payload = encode(options.data);
-      if(method === 'GET') {
-        var queryString = [];
-        if(payload) {
-          queryString.push(payload);
-          payload = null;
-        }
-
-        if(!options.cache) {
-          queryString.push('_=' + (new Date()).getTime());
-        }
-
-        queryString = '?' + queryString.join('&');
-        url += queryString !== '?' ? queryString : '';
-      }
 
       if(ajax.auth) {
         xhr.withCredentials = true;

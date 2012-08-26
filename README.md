@@ -29,7 +29,8 @@ The optional `options` parameter allows you to send additional information. It u
 {
   cache,
   data,
-  headers
+  headers,
+  jsonp
 }
 ```
 
@@ -44,7 +45,8 @@ The meaning and usage of the individual parameters is as follows:
   <tr>
     <td colspan="4">
       This property decides whether the response may be cached by the browser or not. By default, caching is
-      avoided by sending a query string containing the current date and time.
+      avoided by sending a query string containing the current date and time. Please note that this property
+      only affects GET requests.
     </td>
   </tr>
   <tr>
@@ -67,6 +69,15 @@ The meaning and usage of the individual parameters is as follows:
   <tr>
     <td colspan="4">
       This property contains arbitrary headers that shall be sent.
+    </td>
+  </tr>
+  <tr>
+    <td>jsonp</td><td>string</td><td>optional</td><td>''</td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      This property contains a function name that shall be used as callback on a JSONP request. Please note
+      that this property only works on GET requests.
     </td>
   </tr>
 </table>

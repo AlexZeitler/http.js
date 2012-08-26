@@ -11,6 +11,11 @@ html
     p Please open your browser's JavaScript console and check out the source of this page.
 
     script(type='text/javascript').
+
+      var jsonpCallback = function (text) {
+        console.log('GET /jsonp: ' + text);
+      };
+
       http.auth('golo', 'golo');
 
       http.get('/text', function (status, data) {
@@ -21,6 +26,10 @@ html
         cache: true
       }, function (status, data) {
         console.log('GET /json: ' + status + ' => ' +  JSON.stringify(data.json()));
+      });
+
+      http.get('/jsonp', {
+        jsonp: 'jsonpCallback'
       });
 
       http.post('/json', {
