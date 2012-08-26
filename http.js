@@ -6,9 +6,9 @@
       return callback(null, new XMLHttpRequest());
     } else if (window.ActiveXObject) {
       try {
-        return callback(null, ActiveXObject("Msxml2.XMLHTTP"));
+        return callback(null, new ActiveXObject("Msxml2.XMLHTTP"));
       } catch (e) {
-        return callback(null, ActiveXObject("Microsoft.XMLHTTP"));
+        return callback(null, new ActiveXObject("Microsoft.XMLHTTP"));
       }
     }
     return callback(new Error());
@@ -29,65 +29,6 @@
     return result.join('&')
   };
 
-  var utf8 = function (text) {
-    text = text.replace(/\r\n/g, '\n');
-    var result = '';
-
-    for(var i = 0; i < text.length; i++) {
-      var c = text.charCodeAt(i);
-
-      if(c < 128) {
-          result += String.fromCharCode(c);
-      } else if((c > 127) && (c < 2048)) {
-          result += String.fromCharCode((c >> 6) | 192);
-          result += String.fromCharCode((c & 63) | 128);
-      } else {
-          result += String.fromCharCode((c >> 12) | 224);
-          result += String.fromCharCode(((c >> 6) & 63) | 128);
-          result += String.fromCharCode((c & 63) | 128);
-      }
-    }
-
-    return result;
-  };
-
-  var base64 = function (input) {
-    var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-    input = utf8(input);
-    var output = '',
-        chr1, chr2, chr3,
-        enc1, enc2, enc3, enc4,
-        i = 0;
-
-    do {
-      chr1 = input.charCodeAt(i++);
-      chr2 = input.charCodeAt(i++);
-      chr3 = input.charCodeAt(i++);
-
-      enc1 = chr1 >> 2;
-      enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-      enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-      enc4 = chr3 & 63;
-
-      if(isNaN(chr2)) {
-        enc3 = enc4 = 64;
-      } else if(isNaN(chr3)) {
-        enc4 = 64;
-      }
-
-      output +=
-        keyStr.charAt(enc1) +
-        keyStr.charAt(enc2) +
-        keyStr.charAt(enc3) +
-        keyStr.charAt(enc4);
-      chr1 = chr2 = chr3 = '';
-      enc1 = enc2 = enc3 = enc4 = '';
-    } while(i < input.length);
-
-    return output;
-  }
-
   var ajax = function (method, url, data, headers, callback) {
     if(typeof data === 'function') {
       callback = data;
@@ -107,10 +48,11 @@
         payload = null;
       }
 
-      xhr.open(method, url);
-
       if(ajax.auth) {
-        xhr.setRequestHeader('Authorization', 'Basic ' + base64(ajax.auth.username + ':' + ajax.auth.password));
+        xhr.withCredentials = true;
+        xhr.open(method, url, true, ajax.auth.username, ajax.auth.password);        
+      } else {
+        xhr.open(method, url, true);
       }
 
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

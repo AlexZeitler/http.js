@@ -28,3 +28,7 @@ html
       http.get('/auth/basic', function (status, data) {
         console.log('GET /auth/basic: ' + status + ' => ' +  data.text());
       });
+
+      http.get('/auth/digest', function (status, data) {
+        console.log('GET /auth/digest: ' + status + ' => ' +  data.text());
+      });
