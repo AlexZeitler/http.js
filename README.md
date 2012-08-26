@@ -35,9 +35,9 @@ The optional `options` parameter allows you to send additional information. It u
 The meaning and usage of the individual parameters is as follows:
 
 <table>
-  <tr><th>Property</th><th>Type</th><th>Usage</th><th>Description</th></tr>
+  <tr><th>Property</th><th>Type(s)</th><th>Usage</th><th>Description</th></tr>
   <tr>
-    <td>data</td><td>string / object</td><td>optional</td>
+    <td>data</td><td>string, object</td><td>optional</td>
     <td>
       The `data` property contains additional data that is to be sent to the server. In GET requests, the
       `data` property is sent using the query string, otherwise it is transferred hidden within the request's
