@@ -33,13 +33,14 @@
       options = {};
     }
 
-    options.accepts = options.accepts || 'application/json';
+    options.accepts = options.accepts || '*/*';
+    options.accepts = typeof options.accepts === 'string' ? options.accepts : options.accepts.join(',');
     options.contentType = options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8';
     options.data = options.data || {};
     options.headers = options.headers || {};
 
-    options.headers['accept'] = options.accepts;
-    options.headers['content-type'] = options.contentType;
+    options.headers['Accept'] = options.accepts;
+    options.headers['Content-Type'] = options.contentType;
 
     getXhr(function (err, xhr) {
       if(err) return callback(err);
