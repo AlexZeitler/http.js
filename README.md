@@ -40,22 +40,6 @@ The meaning and usage of the individual parameters is as follows:
   <tr><th>Property</th><th>Type(s)</th><th>Usage</th><th>Default</th></tr>
   <tr><th colspan="4">Description</th></tr>
   <tr>
-    <td>accepts</td><td>string, []</td><td>optional</td><td>*/*</td>
-  </tr>
-  <tr>
-    <td colspan="4">
-      This property contains the content-type(s) the browser accepts for the response data.
-    </td>
-  </tr>
-  <tr>
-    <td>contentType</td><td>string</td><td>optional</td><td>application/x-www-form-urlencoded;charset=UTF-8</td>
-  </tr>
-  <tr>
-    <td colspan="4">
-      This property contains the content-type that shall be sent.
-    </td>
-  </tr>
-  <tr>
     <td>data</td><td>string, object</td><td>optional</td><td>-</td>
   </tr>
   <tr>

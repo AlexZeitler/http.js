@@ -33,14 +33,10 @@
       options = {};
     }
 
-    options.accepts = options.accepts || '*/*';
-    options.accepts = typeof options.accepts === 'string' ? options.accepts : options.accepts.join(',');
-    options.contentType = options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8';
     options.data = options.data || {};
     options.headers = options.headers || {};
-
-    options.headers['Accept'] = options.accepts;
-    options.headers['Content-Type'] = options.contentType;
+    options.headers['accept'] = options.headers['accept'] || '*/*';
+    options.headers['content-type'] = options.headers['content-type'] || 'application/x-www-form-urlencoded;charset=UTF-8';
 
     getXhr(function (err, xhr) {
       if(err) return callback(err);
