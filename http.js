@@ -54,7 +54,8 @@
           queryString.push('_=' + (new Date()).getTime());
         }
 
-        url += '?' + queryString.join('&');
+        queryString = '?' + queryString.join('&');
+        url += queryString !== '?' ? queryString : '';
       }
 
       if(method === 'GET')
