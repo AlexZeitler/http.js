@@ -47,7 +47,12 @@ The meaning and usage of the individual parameters is as follows:
     </td>
   </tr>
   <tr>
-    <td>headers</td><td>object</td><td>optional</td><td>-</td>
+    <td>headers</td><td>object</td><td>optional</td><td>
+      {<br />
+        'accept': '*/*',<br />
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'<br />
+      }
+    </td>
   </tr>
   <tr>
     <td colspan="4">
