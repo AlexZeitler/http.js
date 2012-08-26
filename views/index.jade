@@ -44,14 +44,14 @@ html
         console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
       });
 
-      http.allows('/json', 'GET', function (allowed) {
+      http.isAllowed('/json', 'GET', function (allowed) {
         console.log('GET /json is allowed:' + allowed)
       });
 
-      http.allows('/json', 'POST', function (allowed) {
+      http.isAllowed('/json', 'POST', function (allowed) {
         console.log('POST /json is allowed: ' + allowed)
       });
 
-      http.allows('/json', 'PUT', function (allowed) {
+      http.isAllowed('/json', 'PUT', function (allowed) {
         console.log('PUT /json is allowed: ' + allowed)
       });
