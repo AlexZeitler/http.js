@@ -1,0 +1,8 @@
+{
+  "name": "http.js",
+  "version": "0.0.1",
+  "dependencies": {
+    "express:": "3.0.0rc3",
+    "jade": "0.27.2"
+  }
+}

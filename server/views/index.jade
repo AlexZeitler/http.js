@@ -1,0 +1,19 @@
+!!!
+html
+  head
+    meta(http-equiv='Content-Type', content=‘text/html;charset=utf-8')
+
+    title http.js
+
+    script(type='text/javascript', src='https://raw.github.com/goloroden/http.js/master/http.js')
+
+  body
+    p Please open your browser's JavaScript console and check out the source of this page.
+
+    script(type='text/javascript').
+      http.get('/text', function (status, data) {
+        console.log('GET /text: ' + status + ' => ' +  data.text());
+      });
+      http.get('/json', function (status, data) {
+        console.log('GET /json: ' + status + ' => ' +  JSON.stringify(data.json()));
+      });
