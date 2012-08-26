@@ -30,9 +30,9 @@
   var ajax = function (method, url, options, callback) {
     if(typeof options === 'function') {
       callback = options;
+      options = {};
     }
 
-    options = options || {};
     options.data = options.data || {};
     options.headers = options.headers || {};
 
