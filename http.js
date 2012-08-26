@@ -12,10 +12,22 @@
     return callback(new Error());
   };
 
-  var ajax = function (method, url, callback) {
+  var ajax = function (method, url, headers, callback) {
+    if(typeof headers === 'function') {
+      callback = headers;
+      headers = null;
+    }
+
     getXhr(function (err, xhr) {
       if(err) return callback(err);
       xhr.open(method, url);
+
+      for(var header in headers) {
+        if(headers.hasOwnProperty(header)) {
+          xhr.setRequestHeader(header, headers[header]);
+        }
+      }
+
       xhr.onreadystatechange = function () {
         if(xhr.readyState === 4) {
           var data = xhr.responseText || '';
@@ -36,20 +48,20 @@
   };
 
   var http = {
-    get: function (url, callback) {
-      return ajax('GET', url, callback);
+    get: function (url, headers, callback) {
+      return ajax('GET', url, headers, callback);
     },
 
-    post: function (url, callback) {
-      return ajax('POST', url, callback);      
+    post: function (url, headers, callback) {
+      return ajax('POST', url, headers, callback);      
     },
     
-    put: function (url, callback) {
-      return ajax('PUT', url, callback);      
+    put: function (url, headers, callback) {
+      return ajax('PUT', url, headers, callback);      
     },
     
-    delete: function (url, callback) {
-      return ajax('DELETE', url, callback);      
+    delete: function (url, headers, callback) {
+      return ajax('DELETE', url, headers, callback);      
     }
   };
 
