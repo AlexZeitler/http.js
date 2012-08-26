@@ -35,16 +35,29 @@ The optional `options` parameter allows you to send additional information. It u
 The meaning and usage of the individual parameters is as follows:
 
 <table>
-  <tr><th>Property</th><th>Type(s)</th><th>Usage</th><th>Description</th></tr>
+  <tr><th>Property</th><th>Type(s)</th><th>Usage</th><th>Default</th></tr>
+  <tr><th>Description</th></tr>
   <tr>
-    <td>data</td><td>string, object</td><td>optional</td>
+    <td>contentType</td><td>string</td><td>optional</td><td>application/x-www-form-urlencoded;charset=UTF-8</td>
+  </tr>
+  <tr>
+    <td>
+      This property contains the content-type that shall be sent.
+    </td>
+  </tr>
+  <tr>
+    <td>data</td><td>string, object</td><td>optional</td><td>-</td>
+  </tr>
+  <tr>
     <td>
       This property contains additional data that is to be sent to the server. In GET requests, this property is
       sent using the query string, otherwise it is transferred hidden within the request's body.
     </td>
   </tr>
   <tr>
-    <td>headers</td><td>object</td><td>optional</td>
+    <td>headers</td><td>object</td><td>optional</td><td>-</td>
+  </tr>
+  <tr>
     <td>
       This property contains arbitrary headers that shall be sent.
     </td>

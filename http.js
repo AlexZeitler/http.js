@@ -33,8 +33,11 @@
       options = {};
     }
 
+    options.contentType = options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8';
     options.data = options.data || {};
     options.headers = options.headers || {};
+
+    options.headers['content-type'] = options.contentType;
 
     getXhr(function (err, xhr) {
       if(err) return callback(err);
@@ -52,7 +55,6 @@
         xhr.open(method, url, true);
       }
 
-      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
       for(var header in options.headers) {
         if(options.headers.hasOwnProperty(header)) {
           xhr.setRequestHeader(header, options.headers[header]);
