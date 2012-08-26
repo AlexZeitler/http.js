@@ -14,11 +14,16 @@ Now you are able to send AJAX requests. All you need to do is access the `http` 
 
 <table>
   <tr><th>Function</th><th>Description</th></tr>
+  <tr><td>http.auth(username, password)</td><td>Sets credentials that are to be used for each request.</td></tr>
+  <tr><td>http.connect(url, options, callback)</td><td>Sends a CONNECT request to the specified url.</td></tr>
+  <tr><td>http.delete(url, options, callback)</td><td>Sends a DELETE request to the specified url.</td></tr>
   <tr><td>http.get(url, options, callback)</td><td>Sends a GET request to the specified url.</td></tr>
+  <tr><td>http.head(url, options, callback)</td><td>Sends a HEAD request to the specified url.</td></tr>
+  <tr><td>http.options(url, options, callback)</td><td>Sends a OPTIONS request to the specified url.</td></tr>
+  <tr><td>http.patch(url, options, callback)</td><td>Sends a PATCH request to the specified url.</td></tr>
   <tr><td>http.post(url, options, callback)</td><td>Sends a POST request to the specified url.</td></tr>
   <tr><td>http.put(url, options, callback)</td><td>Sends a PUT request to the specified url.</td></tr>
-  <tr><td>http.delete(url, options, callback)</td><td>Sends a DELETE request to the specified url.</td></tr>
-  <tr><td>http.auth(username, password)</td><td>Sets credentials that are to be used for each request.</td></tr>
+  <tr><td>http.trace(url, options, callback)</td><td>Sends a TRACE request to the specified url.</td></tr>
 </table>
 
 ### Sending additional data

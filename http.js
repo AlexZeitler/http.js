@@ -105,8 +105,35 @@
   };
 
   var http = {
+    auth: function (username, password) {
+      ajax.auth = {
+        username: username,
+        password: password
+      };
+    },
+
+    connect: function (url, options, callback) {
+      return ajax('CONNECT', url, options, callback);      
+    },
+
+    delete: function (url, options, callback) {
+      return ajax('DELETE', url, options, callback);      
+    },
+
     get: function (url, options, callback) {
       return ajax('GET', url, options, callback);
+    },
+
+    head: function (url, options, callback) {
+      return ajax('HEAD', url, options, callback);
+    },
+
+    options: function (url, options, callback) {
+      return ajax('OPTIONS', url, options, callback);
+    },
+
+    patch: function (url, options, callback) {
+      return ajax('PATCH', url, options, callback);      
     },
 
     post: function (url, options, callback) {
@@ -116,16 +143,9 @@
     put: function (url, options, callback) {
       return ajax('PUT', url, options, callback);      
     },
-    
-    delete: function (url, options, callback) {
-      return ajax('DELETE', url, options, callback);      
-    },
 
-    auth: function (username, password) {
-      ajax.auth = {
-        username: username,
-        password: password
-      };
+    trace: function (url, options, callback) {
+      return ajax('TRACE', url, options, callback);
     }
   };
 
