@@ -12,16 +12,43 @@
     return callback(new Error());
   };
 
-  var ajax = function (method, url, headers, callback) {
-    if(typeof headers === 'function') {
+  var encode = function (data) {
+    if(typeof data === 'string') {
+      return data;
+    }
+
+    var result = '';
+    for(var dataItem in data) {
+      if(data.hasOwnProperty(dataItem)) {
+        result += '&' + encodeURIComponent(dataItem) + '=' + encodeURIComponent(data[dataItem]);
+      }
+    }
+    
+    return result;
+  }
+
+  var ajax = function (method, url, data, headers, callback) {
+    if(typeof data === 'function') {
+      callback = data;
+      data = {};
+      headers = {};
+    } else if(typeof headers === 'function') {
       callback = headers;
-      headers = null;
+      headers = {};
     }
 
     getXhr(function (err, xhr) {
       if(err) return callback(err);
+
+      var payload = encode(data);
+      if(method === 'GET' && payload) {
+        url += '?' + payload;
+        payload = null;
+      }
+
       xhr.open(method, url);
 
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       for(var header in headers) {
         if(headers.hasOwnProperty(header)) {
           xhr.setRequestHeader(header, headers[header]);
@@ -43,26 +70,26 @@
           })
         }
       };
-      
-      xhr.send(null);
+
+      xhr.send(payload);
     });
   };
 
   var http = {
-    get: function (url, headers, callback) {
-      return ajax('GET', url, headers, callback);
+    get: function (url, data, headers, callback) {
+      return ajax('GET', url, data, headers, callback);
     },
 
-    post: function (url, headers, callback) {
-      return ajax('POST', url, headers, callback);      
+    post: function (url, data, headers, callback) {
+      return ajax('POST', url, data, headers, callback);      
     },
     
-    put: function (url, headers, callback) {
-      return ajax('PUT', url, headers, callback);      
+    put: function (url, data, headers, callback) {
+      return ajax('PUT', url, data, headers, callback);      
     },
     
-    delete: function (url, headers, callback) {
-      return ajax('DELETE', url, headers, callback);      
+    delete: function (url, data, headers, callback) {
+      return ajax('DELETE', url, data, headers, callback);      
     }
   };
 
