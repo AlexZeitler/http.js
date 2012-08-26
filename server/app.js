@@ -2,10 +2,9 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     passport = require('passport'),
-    BasicStrategy = require('passport-http').BasicStrategy;;
+    BasicStrategy = require('passport-http').BasicStrategy;
 
 passport.use(new BasicStrategy({}, function (username, password, done) {
-  // Accepts any username and password, as long as both match each other.
   return done(null, username === password);
 }));
 

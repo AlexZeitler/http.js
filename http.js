@@ -1,3 +1,5 @@
+// The functions utf8 and base64 are based upon http://www.webtoolkit.info/javascript-base64.html.
+
 (function (root) {
   var getXhr = function (callback) {
     if (window.XMLHttpRequest) {
@@ -25,12 +27,34 @@
     }
 
     return result.join('&')
-  }
+  };
+
+  var utf8 = function (text) {
+    text = text.replace(/\r\n/g, '\n');
+    var result = '';
+
+    for(var i = 0; i < text.length; i++) {
+      var c = text.charCodeAt(i);
+
+      if(c < 128) {
+          result += String.fromCharCode(c);
+      } else if((c > 127) && (c < 2048)) {
+          result += String.fromCharCode((c >> 6) | 192);
+          result += String.fromCharCode((c & 63) | 128);
+      } else {
+          result += String.fromCharCode((c >> 12) | 224);
+          result += String.fromCharCode(((c >> 6) & 63) | 128);
+          result += String.fromCharCode((c & 63) | 128);
+      }
+    }
+
+    return result;
+  };
 
   var base64 = function (input) {
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
-    input = escape(input);
+    input = utf8(input);
     var output = '',
         chr1, chr2, chr3,
         enc1, enc2, enc3, enc4,
