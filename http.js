@@ -58,8 +58,6 @@
         url += queryString !== '?' ? queryString : '';
       }
 
-      if(method === 'GET')
-
       if(ajax.auth) {
         xhr.withCredentials = true;
         xhr.open(method, url, true, ajax.auth.username, ajax.auth.password);        
