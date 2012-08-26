@@ -1,7 +1,7 @@
 {
   "VERSION": "0.0.1",
   "JAVASCRIPT": {
-    "http": [ "./src/http.js" ],
-    "DIST_DIR": "."
+    "http": [ "./lib/http.js" ],
+    "DIST_DIR": "./bin"
   }
 }
