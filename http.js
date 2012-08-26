@@ -33,10 +33,12 @@
       options = {};
     }
 
+    options.accepts = options.accepts || 'application/json';
     options.contentType = options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8';
     options.data = options.data || {};
     options.headers = options.headers || {};
 
+    options.headers['accept'] = options.accepts;
     options.headers['content-type'] = options.contentType;
 
     getXhr(function (err, xhr) {
