@@ -7,7 +7,7 @@ http.js provides AJAX functionality for the browser.
 Basically, using http.js is easy. All you need to do is to add a reference to it within your application:
 
 ```html
-<script type="text/javascript" src="https://raw.github.com/goloroden/http.js/master/http.js"></script>
+<script type="text/javascript" src="https://raw.github.com/goloroden/http.js/master/http-[x.y.z].min.js"></script>
 ```
 
 Now you are able to send AJAX requests. All you need to do is access the `http` object and use its functions:
