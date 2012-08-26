@@ -44,10 +44,14 @@ html
         console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
       });
 
-      http.get('/auth/basic', function (status, data) {
-        console.log('GET /auth/basic: ' + status + ' => ' +  data.text());
+      http.allows('/json', 'GET', function (allowed) {
+        console.log('GET /json is allowed:' + allowed)
       });
 
-      http.get('/auth/digest', function (status, data) {
-        console.log('GET /auth/digest: ' + status + ' => ' +  data.text());
+      http.allows('/json', 'POST', function (allowed) {
+        console.log('POST /json is allowed: ' + allowed)
+      });
+
+      http.allows('/json', 'PUT', function (allowed) {
+        console.log('PUT /json is allowed: ' + allowed)
       });

@@ -14,6 +14,7 @@ Now you are able to send AJAX requests. All you need to do is access the `http` 
 
 <table>
   <tr><th>Function</th><th>Description</th></tr>
+  <tr><td>http.allowed(url, verb, callback)</td><td>Gets whether the specified verb is allowed for the given url, or not.</td></tr>
   <tr><td>http.auth(username, password)</td><td>Sets credentials that are to be used for each request.</td></tr>
   <tr><td>http.connect(url, options, callback)</td><td>Sends a CONNECT request to the specified url.</td></tr>
   <tr><td>http.delete(url, options, callback)</td><td>Sends a DELETE request to the specified url.</td></tr>
