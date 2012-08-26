@@ -2,10 +2,20 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     passport = require('passport'),
-    BasicStrategy = require('passport-http').BasicStrategy;
+    BasicStrategy = require('passport-http').BasicStrategy,
+    DigestStrategy = require('passport-http').DigestStrategy;
 
 passport.use(new BasicStrategy({}, function (username, password, done) {
   return done(null, username === password);
+}));
+
+passport.use(new DigestStrategy({
+  qop: 'auth'
+}, function (username, done) {
+  var password = username;
+  return done(null, username, password);
+}, function (params, done) {
+  return done(null, true);
 }));
 
 var app = express();
@@ -48,8 +58,12 @@ app.post('/json', function (req, res, next) {
   });
 });
 
-app.get('/text/auth', passport.authenticate('basic', { session: false }), function (req, res, next) {
+app.get('/auth/basic', passport.authenticate('basic', { session: false }), function (req, res, next) {
   res.send('http.js with HTTP Basic authentication');
+});
+
+app.get('/auth/digest', passport.authenticate('digest', { session: false }), function (req, res, next) {
+  res.send('http.js with HTTP Digest authentication');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

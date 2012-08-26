@@ -25,6 +25,6 @@ html
         console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
       });
 
-      http.get('/text/auth', function (status, data) {
-        console.log('GET /text/auth: ' + status + ' => ' +  data.text());
+      http.get('/auth/basic', function (status, data) {
+        console.log('GET /auth/basic: ' + status + ' => ' +  data.text());
       });
