@@ -76,8 +76,8 @@ The meaning and usage of the individual parameters is as follows:
   </tr>
   <tr>
     <td colspan="4">
-      This property contains a function name that shall be used as callback on a JSONP request. Please note
-      that this property only works on GET requests.
+      This property contains a function name that shall be used as callback on a JSONP request. When this property
+      is specified no callback is required. Please note that this property only works on GET requests.
     </td>
   </tr>
 </table>
