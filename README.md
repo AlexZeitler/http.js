@@ -39,15 +39,14 @@ The meaning and usage of the individual parameters is as follows:
   <tr>
     <td>data</td><td>string, object</td><td>optional</td>
     <td>
-      The `data` property contains additional data that is to be sent to the server. In GET requests, the
-      `data` property is sent using the query string, otherwise it is transferred hidden within the request's
-      body.
+      This property contains additional data that is to be sent to the server. In GET requests, this property is
+      sent using the query string, otherwise it is transferred hidden within the request's body.
     </td>
   </tr>
   <tr>
     <td>headers</td><td>object</td><td>optional</td>
     <td>
-      The `headers` property contains arbitrary headers that shall be sent.
+      This property contains arbitrary headers that shall be sent.
     </td>
   </tr>
 </table>
