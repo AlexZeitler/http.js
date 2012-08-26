@@ -21,7 +21,9 @@ html
         console.log('GET /json: ' + status + ' => ' +  JSON.stringify(data.json()));
       });
 
-      http.post('/json', {foo: 'bar'}, function (status, data) {
+      http.post('/json', {
+        data: {foo: 'bar'}
+      }, function (status, data) {
         console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
       });
 
