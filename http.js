@@ -23,7 +23,7 @@
         result += '&' + encodeURIComponent(dataItem) + '=' + encodeURIComponent(data[dataItem]);
       }
     }
-    
+
     return result;
   }
 
