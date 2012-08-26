@@ -14,6 +14,11 @@ html
       http.get('/text', function (status, data) {
         console.log('GET /text: ' + status + ' => ' +  data.text());
       });
+
       http.get('/json', function (status, data) {
         console.log('GET /json: ' + status + ' => ' +  JSON.stringify(data.json()));
+      });
+
+      http.post('/json', {foo: 'bar'}, function (status, data) {
+        console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
       });

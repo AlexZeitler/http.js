@@ -34,6 +34,13 @@ app.get('/json', function (req, res, next) {
   });
 });
 
+app.post('/json', function (req, res, next) {
+  res.send({
+    name: 'http.js',
+    data: req.body
+  });
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
