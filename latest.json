@@ -1,0 +1,6 @@
+{
+  "JAVASCRIPT": {
+    "http": [ "./lib/http.js" ],
+    "DIST_DIR": "./bin"
+  }
+}
