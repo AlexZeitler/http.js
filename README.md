@@ -51,7 +51,7 @@ Use the appropriate named functions to access these verbs.*
 
 ## Discovering supported verbs
 
-If you need to find out of a specific verb is supported by a given url you can use the `http.isAllowed`
+If you need to find out whether a specific verb is supported by a given url you can use the `http.isAllowed`
 function as follows:
 
 ```javascript
