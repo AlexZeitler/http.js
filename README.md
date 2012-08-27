@@ -2,124 +2,150 @@
 
 http.js provides AJAX functionality for the browser.
 
-## Quick start
+## Installing
 
-Basically, using http.js is easy. All you need to do is to add a reference to it within your application. Use
-
-```html
-<script type="text/javascript" src="https://raw.github.com/goloroden/http.js/master/bin/http-[x.y.z].min.js"></script>
-```
-
-to get a specific version, or
+Basically, using http.js is easy. All you need to do is add a script reference within your web site. If you want
+to use the latest version hosted on GitHub, use:
 
 ```html
 <script type="text/javascript" src="https://raw.github.com/goloroden/http.js/master/bin/http.min.js"></script>
 ```
 
-to get the latest one.
+If instead you want to use a specific version hosted on GitHub, use:
 
-Now you are able to send AJAX requests. All you need to do is access the `http` object and use its functions:
+```html
+<script type="text/javascript" src="https://raw.github.com/goloroden/http.js/master/bin/http-[x.y.z].min.js"></script>
+```
 
-<table>
-  <tr><th>Function</th><th>Description</th></tr>
-  <tr><td>http.auth(username, password)</td><td>Sets credentials that are to be used for each request.</td></tr>
-  <tr><td>http.connect(url, options, callback)</td><td>Sends a CONNECT request to the specified url.</td></tr>
-  <tr><td>http.delete(url, options, callback)</td><td>Sends a DELETE request to the specified url.</td></tr>
-  <tr><td>http.get(url, options, callback)</td><td>Sends a GET request to the specified url.</td></tr>
-  <tr><td>http.isAllowed(url, verb, callback)</td><td>Gets whether the specified verb is allowed for the given url, or not.</td></tr>
-  <tr><td>http.head(url, options, callback)</td><td>Sends a HEAD request to the specified url.</td></tr>
-  <tr><td>http.options(url, options, callback)</td><td>Sends a OPTIONS request to the specified url.</td></tr>
-  <tr><td>http.patch(url, options, callback)</td><td>Sends a PATCH request to the specified url.</td></tr>
-  <tr><td>http.post(url, options, callback)</td><td>Sends a POST request to the specified url.</td></tr>
-  <tr><td>http.put(url, options, callback)</td><td>Sends a PUT request to the specified url.</td></tr>
-  <tr><td>http.trace(url, options, callback)</td><td>Sends a TRACE request to the specified url.</td></tr>
-</table>
+Of course you can also download any version manually and add a local reference.
 
-### Sending additional data
+If you are running Visual Studio, instead of downloading manually you can also install http.js by using the
+[NuGet package](http://nuget.org/packages/http.js). For that run the following command inside the NuGet console:
 
-The optional `options` parameter allows you to send additional information. It uses the following structure:
+    PM> Install-Package http.js
+
+*Note: The NuGet package was created by [Alexander Zeitler](http://www.pdmlab.com). Thanks for that :-)!*
+
+## Basic usage
+
+Once you created the reference, you are able to use http.js. You access it by `http`, which is a global object
+in your web site.
+
+The easiest thing you can do is to `GET` data from a specific url. For that, use the `http.get` function and
+provide the required parameters. In the callback you can access the HTTP status code as well as the returned
+data, either formatted as plain text or - if applicable - as JSON:
 
 ```javascript
-{
-  cache,
-  data,
-  headers,
-  jsonp
+http.get(url, function (status, data) {
+  console.log('HTTP status code: ' + status);
+  console.log('Data (as text)  : ' + data.text());
+  console.log('Data (as JSON)  : ' + data.json());
+});
+```
+
+Insted of `http.get` you can also use `http.post`, `http.put` and `http.delete` to send requests using the
+verbs `POST`, `PUT` and `DELETE` instead of `GET`.
+
+*Note: For advanced usage, the verbs `CONNECT`, `HEAD`, `OPTIONS`, `PATCH` and `TRACE` are also supported.
+Use the appropriate named functions to access these verbs.*
+
+## Discovering supported verbs
+
+If you need to find out of a specific verb is supported by a given url you can use the `http.isAllowed`
+function as follows:
+
+```javascript
+http.isAllowed(url, 'GET', function (isAllowed) {
+  console.log('GET ' + url + ' is allowed: ' + isAllowed);
+});
+```
+
+Internally this performs an `OPTIONS` request on the given url and verifies whether the specified verb
+is contained within the result.
+
+## Sending data
+
+Sometimes it is necessary to send additional data appended to a request. For that, use the `options`
+parameter and supply its `data` property. You can either specify the data value using a `string` or an
+`object`:
+
+```javascript
+http.get(url, { data: 'foo' }, function (status, data) {
+  // ...
+});
+
+http.get(url, { data: { foo: 'bar' } }, function (status, data) {
+  // ...
+});
+```
+
+When doing a `GET` request, the `data` value is sent using the query string. With all other types of
+requests it is sent hidden inside the request body.
+
+## Sending headers
+
+From time to time it may be necessary to specify additional headers that shall be sent. For that you
+can use the `options` parameter as well, but this time you need to specify its `headers` property.
+
+The value of this property is of type `object` and defines headers and their respective values:
+
+```javascript
+http.get(url, { headers: { 'accept': 'application/json' } }, function (status, data) {
+  // ...
+});
+```
+
+Most often this feature is used to specify `accept` and `content-type` headers.
+
+Please note that these headers are even sent if you do not specify them explicitly. For them the
+following default values are used:
+
+```javascript
+headers: {
+  'accept': '*/*',
+  'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 }
 ```
 
-The meaning and usage of the individual parameters is as follows:
+## Caching requests
 
-<table>
-  <tr><th>Property</th><th>Type(s)</th><th>Usage</th><th>Default</th></tr>
-  <tr><th colspan="4">Description</th></tr>
-  <tr>
-    <td>cache</td><td>boolean</td><td>optional</td><td>false</td>
-  </tr>
-  <tr>
-    <td colspan="4">
-      This property decides whether the response may be cached by the browser or not. By default, caching is
-      avoided by sending a query string containing the current date and time. Please note that this property
-      only affects GET requests.
-    </td>
-  </tr>
-  <tr>
-    <td>data</td><td>string, object</td><td>optional</td><td>-</td>
-  </tr>
-  <tr>
-    <td colspan="4">
-      This property contains additional data that is to be sent to the server. In GET requests, this property is
-      sent using the query string, otherwise it is transferred hidden within the request's body.
-    </td>
-  </tr>
-  <tr>
-    <td>headers</td><td>object</td><td>optional</td><td>
-      {<br />
-        'accept': '*/*',<br />
-        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'<br />
-      }
-    </td>
-  </tr>
-  <tr>
-    <td colspan="4">
-      This property contains arbitrary headers that shall be sent.
-    </td>
-  </tr>
-  <tr>
-    <td>jsonp</td><td>string</td><td>optional</td><td>-</td>
-  </tr>
-  <tr>
-    <td colspan="4">
-      This property contains a function name that shall be used as callback on a JSONP request. When this property
-      is specified no callback is required. Please note that this property only works on GET requests.
-    </td>
-  </tr>
-</table>
+Some browsers (i.e. Internet Explorer ;-)) tend to cache `GET` requests that return data with the
+content-type `application/json`.
 
-### Handling the result
+Since this is not what you want most of the times, http.js adds a query string parameter called `_`
+on `GET` requests automatically. This parameter contains the current date and time so that subsequent
+requests to the same url look different and the browser does not try to cache the results.
 
-Once the result has been received, the specified `callback` function is called. Its `data` parameter provides two
-functions, `text` and `json` which return the result in the desired format:
+If you want to explicitly allow caching on `GET` requests, you can do so by specifying the `options`
+object and its `cache` property:
 
 ```javascript
-http.get('/text', function (status, data) {
-  console.log('HTTP status code: ' + status);
-  console.log('Data (as text):   ' + data.text());
-});
-
-http.get('/json', function (status, data) {
-  console.log('HTTP status code: ' + status);
-  console.log('Data (as JSON):   ' + data.json());
+http.get(url, { cache: true }, function (status, data) {
+  // ...
 });
 ```
 
-### Authentication
+## Using JSONP
 
-If necessary you can use the `auth` function to set credentials once that are then used for each request:
+Sometimes you need to do cross-domain GET requests. If the requested web server does not support
+[CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), [JSONP](http://en.wikipedia.org/wiki/JSONP)
+may be an alternative.
+
+To use JSONP, you need to specify the `options` object and its `jsonp` property. The value of this
+property is the name of the callback function:
 
 ```javascript
-http.auth('golo', 'secret');
+http.get(url, { jsonp: 'foo' });
 ```
+
+When specifying the `jsonp` property, no inline callback is needed as with the normal usage of the
+`http.get` function.
+
+*Note: JSONP calls are only supported on `GET` requests.*
+
+## Authenticating requests
+
+*Currently under development, stay tuned.*
 
 That's it :-)!
 
