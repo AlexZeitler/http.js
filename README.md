@@ -147,6 +147,14 @@ When specifying the `jsonp` property, no inline callback is needed as with the n
 
 *Currently under development, stay tuned.*
 
+## Running the tests
+
+To run the tests, first start a Node.js server using the following command:
+
+    $ node server/app.js
+
+Next, open a browser and redirect it to `http://localhost:3000`.
+
 That's it :-)!
 
 ## License
