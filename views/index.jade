@@ -5,53 +5,24 @@ html
 
     title http.js
 
+    link(rel='stylesheet', type='text/css', href='/server/public/styles/mocha.css')
+
     script(type='text/javascript', src='/lib/http.js')
 
+    script(type='text/javascript', src='/server/public/scripts/jquery-1.8.0.min.js')
+    script(type='text/javascript', src='/server/public/scripts/expect.js')
+    script(type='text/javascript', src='/server/public/scripts/mocha.js')
+    script(type='text/javascript').
+      mocha.setup({
+        globals: [ 'script*' ],
+        ui: 'tdd'
+      });
+    script(type='text/javascript', src='/test/get.js')
+
   body
-    p Please open your browser's JavaScript console and check out the source of this page.
+    #mocha
 
     script(type='text/javascript').
-
-      var jsonpCallback = function (text) {
-        console.log('GET /jsonp: ' + text);
-      };
-
-      http.auth('golo', 'golo');
-
-      http.get('/text', function (status, data) {
-        console.log('GET /text: ' + status + ' => ' +  data.text());
-      });
-
-      http.get('/json', {
-        cache: true
-      }, function (status, data) {
-        console.log('GET /json: ' + status + ' => ' +  JSON.stringify(data.json()));
-      });
-
-      http.get('/jsonp', {
-        jsonp: 'jsonpCallback'
-      });
-
-      http.post('/json', {
-        data: {
-          foo: 'bar'
-        },
-        headers: {
-          'accept': 'application/json',
-          'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        }
-      }, function (status, data) {
-        console.log('POST /json: ' + status + ' => ' +  JSON.stringify(data.json()));
-      });
-
-      http.isAllowed('/json', 'GET', function (allowed) {
-        console.log('GET /json is allowed:' + allowed)
-      });
-
-      http.isAllowed('/json', 'POST', function (allowed) {
-        console.log('POST /json is allowed: ' + allowed)
-      });
-
-      http.isAllowed('/json', 'PUT', function (allowed) {
-        console.log('PUT /json is allowed: ' + allowed)
+      $(function () {
+        mocha.run();
       });
