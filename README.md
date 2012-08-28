@@ -6,9 +6,11 @@ http.js provides AJAX functionality for the browser.
 
 http.js has successfully been tested on:
 
-- Mac OS X
-    - Chrome 21
-    - Firefox 11, 13 & 15
+<table>
+  <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
+  <tr><td>Chrome</td><td>n/a</td><td>21</td><td>n/a></td></tr>
+  <tr><td>Firefox</td><td>n/a</td><td>11, 13 &amp; 15</td><td>n/a</td></tr>
+</table>
 
 You can support http.js by [running the tests][running-the-tests] on a browser and OS not listed yet, add your
 findings to the `README.md` file and sending a pull request.
