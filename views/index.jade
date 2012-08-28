@@ -14,12 +14,13 @@ html
     script(type='text/javascript', src='/server/public/scripts/mocha.js')
     script(type='text/javascript').
       mocha.setup({
-        globals: [ 'script*' ],
+        globals: [ 'script*', 'verify' ],
         ui: 'tdd'
       });
     script(type='text/javascript', src='/test/basicUsage.js')
     script(type='text/javascript', src='/test/sendingData.js')
-    script(type='text/javascript', src='/test/discoveringSupportedVerbs.js')
+    script(type='text/javascript', src='/test/discoveringAllowedVerbs.js')
+    script(type='text/javascript', src='/test/usingJsonp.js')
 
   body
     #mocha
