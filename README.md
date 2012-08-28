@@ -15,7 +15,7 @@ http.js has successfully been tested on:
   <tr><td>Safari</td><td></td><td>6</td><td></td></tr>
 </table>
 
-You can support http.js by [running the tests](#running-the-tests) on a browser and OS not listed yet, add your
+You can support http.js by [running the tests](#running-the-tests) on a browser and OS not listed yet, adding your
 findings to the `README.md` file and sending a pull request.
 
 ## Installing
