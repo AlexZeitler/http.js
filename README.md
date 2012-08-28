@@ -12,7 +12,7 @@ http.js has successfully been tested on:
   <tr><td>Firefox</td><td>n/a</td><td>11, 13 &amp; 15</td><td>n/a</td></tr>
 </table>
 
-You can support http.js by [running the tests][running-the-tests] on a browser and OS not listed yet, add your
+You can support http.js by [running the tests](#running-the-tests) on a browser and OS not listed yet, add your
 findings to the `README.md` file and sending a pull request.
 
 ## Installing
