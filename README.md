@@ -149,14 +149,16 @@ When specifying the `jsonp` property, no inline callback is needed as with the n
 
 ## Running the tests
 
-To run the tests, first start a Node.js server using the following command:
-
-    $ node server/app.js
-
 Before running the tests for the first time, you need to install the dependencies of the Node.js application.
 For that go to the `server` folder and run:
 
     $ npm install
+
+*Note: You need to do this only once.*
+
+To run the tests, first start a Node.js server using the following command:
+
+    $ node server/app.js
 
 Next, open a browser and redirect it to `http://localhost:3000`.
 
