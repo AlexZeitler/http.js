@@ -153,6 +153,9 @@ To run the tests, first start a Node.js server using the following command:
 
     $ node server/app.js
 
+*Note: Before running the tests for the first time, you need to install the dependencies. For that go
+to the `server` folder and run `npm install`.*
+
 Next, open a browser and redirect it to `http://localhost:3000`.
 
 <table>
