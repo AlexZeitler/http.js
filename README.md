@@ -164,9 +164,9 @@ Next, open a browser and redirect it to `http://localhost:3000`.
 
 <table>
   <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-  <tr><td>Chrome</td><td></td><td>12</td><td></td></tr>
+  <tr><td>Chrome</td><td>21</td><td>12</td><td></td></tr>
   <tr><td>Firefox</td><td>14 &amp; 15</td><td>11, 13 &amp; 15</td><td></td></tr>
-  <tr><td>Internet Explorer</td><td>9</td><td></td><td></td></tr>
+  <tr><td>Internet Explorer</td><td>9 &amp; 10</td><td></td><td></td></tr>
   <tr><td>Opera</td><td></td><td></td><td></td></tr>
   <tr><td>Safari</td><td>5</td><td>6</td><td></td></tr>
 </table>
