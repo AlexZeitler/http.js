@@ -162,6 +162,8 @@ To run the tests, first start a Node.js server using the following command:
 
 Next, open a browser and redirect it to `http://localhost:3000`.
 
+Tests have successfully been run on the following browser and OS combinations:
+
 <table>
   <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
   <tr><td>Chrome</td><td>21</td><td>21</td><td>15</td></tr>
@@ -170,6 +172,9 @@ Next, open a browser and redirect it to `http://localhost:3000`.
   <tr><td>Opera</td><td></td><td></td><td></td></tr>
   <tr><td>Safari</td><td>5</td><td>6</td><td></td></tr>
 </table>
+
+*Note: If a specific browser and OS combination is not listed, it does not mean that http.js does not work.
+It simply means that nobody has tested it yet.*
 
 You can support http.js by running the tests as described above on a browser and OS not listed yet, adding
 your findings to the `README.md` file and sending a pull request.
