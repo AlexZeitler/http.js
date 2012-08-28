@@ -153,8 +153,10 @@ To run the tests, first start a Node.js server using the following command:
 
     $ node server/app.js
 
-*Note: Before running the tests for the first time, you need to install the dependencies. For that go
-to the `server` folder and run `npm install`.*
+Before running the tests for the first time, you need to install the dependencies. For that go to the
+`server` folder and run:
+
+    $ npm install
 
 Next, open a browser and redirect it to `http://localhost:3000`.
 
@@ -167,8 +169,8 @@ Next, open a browser and redirect it to `http://localhost:3000`.
   <tr><td>Safari</td><td>5</td><td>6</td><td></td></tr>
 </table>
 
-You can support http.js by [running the tests](#running-the-tests) on a browser and OS not listed yet, adding your
-findings to the `README.md` file and sending a pull request.
+You can support http.js by running the tests as described above on a browser and OS not listed yet, adding
+your findings to the `README.md` file and sending a pull request.
 
 That's it :-)!
 
