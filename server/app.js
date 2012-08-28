@@ -2,6 +2,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     passport = require('passport'),
+    routes = require('./routes'),
     BasicStrategy = require('passport-http').BasicStrategy,
     DigestStrategy = require('passport-http').DigestStrategy;
 
@@ -41,33 +42,21 @@ app.get('/', function (req, res, next) {
   res.render('index');
 });
 
-app.get('/text', function (req, res, next) {
-  res.send('http.js');
-});
+app.get('/basicUsage/text', routes.basicUsage.text);
+app.get('/basicUsage/json', routes.basicUsage.json);
+app.post('/basicUsage/text', routes.basicUsage.text);
+app.post('/basicUsage/json', routes.basicUsage.json);
+app.put('/basicUsage/text', routes.basicUsage.text);
+app.put('/basicUsage/json', routes.basicUsage.json);
+app.delete('/basicUsage/text', routes.basicUsage.text);
+app.delete('/basicUsage/json', routes.basicUsage.json);
 
-app.get('/json', function (req, res, next) {
-  res.send({
-    name: 'http.js'
-  });
-});
+app.post('/sendingData/json', routes.sendingData.postJson);
 
-app.post('/json', function (req, res, next) {
-  res.send({
-    name: 'http.js',
-    data: req.body
-  });
-});
+app.get('/discoveringSupportedVerbs', routes.discoveringSupportedVerbs.get);
 
 app.get('/jsonp', function (req, res, next) {
   res.send((req.query['callback'] || req.query['jsonp']) + '(\'http.js\');');
-});
-
-app.get('/auth/basic', passport.authenticate('basic', { session: false }), function (req, res, next) {
-  res.send('http.js with HTTP Basic authentication');
-});
-
-app.get('/auth/digest', passport.authenticate('digest', { session: false }), function (req, res, next) {
-  res.send('http.js with HTTP Digest authentication');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
