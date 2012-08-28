@@ -34,9 +34,15 @@ module.exports = {
     }
   },
 
+  cachingRequests: {
+    get: function (req, res, next) {
+      res.send(!!req.query._);
+    }
+  },
+
   usingJsonp: {
     text: function (req, res, next) {
-      res.send((req.query['callback'] || req.query['jsonp']) + '(\'http.js\');');
+      res.send((req.query.callback || req.query.jsonp) + '(\'http.js\');');
     }
   }
 };
