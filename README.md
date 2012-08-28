@@ -8,7 +8,7 @@ http.js has successfully been tested on:
 
 <table>
   <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-  <tr><td>Chrome</td><td>n/a</td><td>21</td><td>n/a></td></tr>
+  <tr><td>Chrome</td><td>n/a</td><td>21</td><td>n/a</td></tr>
   <tr><td>Firefox</td><td>n/a</td><td>11, 13 &amp; 15</td><td>n/a</td></tr>
 </table>
 
