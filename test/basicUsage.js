@@ -1,6 +1,6 @@
 suite('Basic usage', function () {
   suite('GET', function () {
-    test('Requesting text ', function (done) {
+    test('Requesting text returns { 200, text }', function (done) {
       http.get('/basicUsage/text', function (status, data) {
         expect({
           status: status,
@@ -13,7 +13,7 @@ suite('Basic usage', function () {
       });
     });
 
-    test('Requesting JSON', function (done) {
+    test('Requesting JSON returns { 200, JSON }', function (done) {
       http.get('/basicUsage/json', function (status, data) {
         expect({
           status: status,
@@ -24,11 +24,18 @@ suite('Basic usage', function () {
         });
         done();
       });
-    });    
+    });
+
+    test('Requesting a non-existing resource returns 404', function (done) {
+      http.get('/nonExisting/text', function (status, data) {
+        expect(status).to.eql(404);
+        done();
+      });
+    });
   });
 
   suite('POST', function () {
-    test('Requesting text ', function (done) {
+    test('Requesting text returns { 200, text }', function (done) {
       http.post('/basicUsage/text', function (status, data) {
         expect({
           status: status,
@@ -41,7 +48,7 @@ suite('Basic usage', function () {
       });
     });
 
-    test('Requesting JSON', function (done) {
+    test('Requesting JSON returns { 200, JSON }', function (done) {
       http.post('/basicUsage/json', function (status, data) {
         expect({
           status: status,
@@ -53,10 +60,17 @@ suite('Basic usage', function () {
         done();
       });
     });    
+
+    test('Requesting a non-existing resource returns 404', function (done) {
+      http.post('/nonExisting/text', function (status, data) {
+        expect(status).to.eql(404);
+        done();
+      });
+    });
   });
 
   suite('PUT', function () {
-    test('Requesting text ', function (done) {
+    test('Requesting text returns { 200, text }', function (done) {
       http.put('/basicUsage/text', function (status, data) {
         expect({
           status: status,
@@ -69,7 +83,7 @@ suite('Basic usage', function () {
       });
     });
 
-    test('Requesting JSON', function (done) {
+    test('Requesting JSON returns { 200, JSON }', function (done) {
       http.put('/basicUsage/json', function (status, data) {
         expect({
           status: status,
@@ -81,10 +95,17 @@ suite('Basic usage', function () {
         done();
       });
     });    
+
+    test('Requesting a non-existing resource returns 404', function (done) {
+      http.put('/nonExisting/text', function (status, data) {
+        expect(status).to.eql(404);
+        done();
+      });
+    });
   });
 
   suite('DELETE', function () {
-    test('Requesting text ', function (done) {
+    test('Requesting text returns { 200, text }', function (done) {
       http.delete('/basicUsage/text', function (status, data) {
         expect({
           status: status,
@@ -97,7 +118,7 @@ suite('Basic usage', function () {
       });
     });
 
-    test('Requesting JSON', function (done) {
+    test('Requesting JSON returns { 200, JSON }', function (done) {
       http.delete('/basicUsage/json', function (status, data) {
         expect({
           status: status,
@@ -109,5 +130,12 @@ suite('Basic usage', function () {
         done();
       });
     });    
+
+    test('Requesting a non-existing resource returns 404', function (done) {
+      http.delete('/nonExisting/text', function (status, data) {
+        expect(status).to.eql(404);
+        done();
+      });
+    });
   });
 });
