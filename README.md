@@ -2,6 +2,17 @@
 
 http.js provides AJAX functionality for the browser.
 
+## Compatibility
+
+http.js has successfully been tested on:
+
+- Mac OS X
+    - Chrome 21
+    - Firefox 11, 13 & 15
+
+You can support http.js by [running the tests][running-the-tests] on a browser and OS not listed yet, add your
+findings to the `README.md` file and sending a pull request.
+
 ## Installing
 
 Basically, using http.js is easy. All you need to do is add a script reference within your web site. If you want
