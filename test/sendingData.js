@@ -1,6 +1,6 @@
 suite('Sending data', function () {
   suite('POST', function () {
-    test('Sending JSON data.', function (done) {
+    test('Sending JSON returns JSON.', function (done) {
       http.post('/sendingData/json', { data: { foo: 'bar' } }, function (status, data) {
         expect({
           status: status,

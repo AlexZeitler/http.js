@@ -11,6 +11,12 @@ module.exports = {
     }
   },
 
+  discoveringAllowedVerbs: {
+    get: function (req, res, next) {
+      res.send('http.js');
+    }
+  },
+
   sendingData: {
     postJson: function (req, res, next) {
       res.send({
@@ -20,9 +26,11 @@ module.exports = {
     }
   },
 
-  discoveringSupportedVerbs: {
+  sendingHeaders: {
     get: function (req, res, next) {
-      res.send('http.js');
+      res.send({
+        sentBy: req.get('sentBy')
+      });
     }
   },
 

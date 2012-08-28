@@ -51,9 +51,11 @@ app.put('/basicUsage/json', routes.basicUsage.json);
 app.delete('/basicUsage/text', routes.basicUsage.text);
 app.delete('/basicUsage/json', routes.basicUsage.json);
 
+app.get('/discoveringAllowedVerbs', routes.discoveringAllowedVerbs.get);
+
 app.post('/sendingData/json', routes.sendingData.postJson);
 
-app.get('/discoveringAllowedVerbs', routes.discoveringSupportedVerbs.get);
+app.get('/sendingHeaders/get', routes.sendingHeaders.get);
 
 app.get('/usingJsonp/text', routes.usingJsonp.text);
 

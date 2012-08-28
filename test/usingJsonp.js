@@ -1,5 +1,5 @@
 suite('Using JSONP', function () {
-  test('Requesting a callback with text.', function (done) {
+  test('Requesting a callback with text runs the callback.', function (done) {
     // Introduce a global function called 'verify'. This is by intention.
     verify = function (text) {
       expect(text).to.eql('http.js');
