@@ -57,6 +57,8 @@ app.post('/sendingData/json', routes.sendingData.postJson);
 
 app.get('/sendingHeaders/get', routes.sendingHeaders.get);
 
+app.get('/cachingRequests/get', routes.cachingRequests.get);
+
 app.get('/usingJsonp/text', routes.usingJsonp.text);
 
 http.createServer(app).listen(app.get('port'), function(){
