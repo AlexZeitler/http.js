@@ -153,8 +153,8 @@ To run the tests, first start a Node.js server using the following command:
 
     $ node server/app.js
 
-Before running the tests for the first time, you need to install the dependencies. For that go to the
-`server` folder and run:
+Before running the tests for the first time, you need to install the dependencies of the Node.js application.
+For that go to the `server` folder and run:
 
     $ npm install
 
