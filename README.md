@@ -2,22 +2,6 @@
 
 http.js provides AJAX functionality for the browser.
 
-## Compatibility
-
-http.js has successfully been tested on:
-
-<table>
-  <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-  <tr><td>Chrome</td><td></td><td>12</td><td></td></tr>
-  <tr><td>Firefox</td><td></td><td>11, 13 &amp; 15</td><td></td></tr>
-  <tr><td>Internet Explorer</td><td>9</td><td></td><td></td></tr>
-  <tr><td>Opera</td><td></td><td></td><td></td></tr>
-  <tr><td>Safari</td><td></td><td>6</td><td></td></tr>
-</table>
-
-You can support http.js by [running the tests](#running-the-tests) on a browser and OS not listed yet, adding your
-findings to the `README.md` file and sending a pull request.
-
 ## Installing
 
 Basically, using http.js is easy. All you need to do is add a script reference within your web site. If you want
@@ -170,6 +154,18 @@ To run the tests, first start a Node.js server using the following command:
     $ node server/app.js
 
 Next, open a browser and redirect it to `http://localhost:3000`.
+
+<table>
+  <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
+  <tr><td>Chrome</td><td></td><td>12</td><td></td></tr>
+  <tr><td>Firefox</td><td></td><td>11, 13 &amp; 15</td><td></td></tr>
+  <tr><td>Internet Explorer</td><td>9</td><td></td><td></td></tr>
+  <tr><td>Opera</td><td></td><td></td><td></td></tr>
+  <tr><td>Safari</td><td></td><td>6</td><td></td></tr>
+</table>
+
+You can support http.js by [running the tests](#running-the-tests) on a browser and OS not listed yet, adding your
+findings to the `README.md` file and sending a pull request.
 
 That's it :-)!
 
