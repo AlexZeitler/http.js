@@ -24,5 +24,11 @@ module.exports = {
     get: function (req, res, next) {
       res.send('http.js');
     }
+  },
+
+  usingJsonp: {
+    text: function (req, res, next) {
+      res.send((req.query['callback'] || req.query['jsonp']) + '(\'http.js\');');
+    }
   }
 };

@@ -55,9 +55,7 @@ app.post('/sendingData/json', routes.sendingData.postJson);
 
 app.get('/discoveringAllowedVerbs', routes.discoveringSupportedVerbs.get);
 
-app.get('/jsonp', function (req, res, next) {
-  res.send((req.query['callback'] || req.query['jsonp']) + '(\'http.js\');');
-});
+app.get('/usingJsonp/text', routes.usingJsonp.text);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

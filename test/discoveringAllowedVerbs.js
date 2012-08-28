@@ -1,4 +1,4 @@
-suite('Discovering supported verbs', function () {
+suite('Discovering allowed verbs', function () {
   test('Verify if GET is allowed.', function (done) {
     http.isAllowed('/discoveringAllowedVerbs', 'GET', function (isAllowed) {
       expect(isAllowed).to.eql(true);
