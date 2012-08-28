@@ -49,9 +49,9 @@ verbs `POST`, `PUT` and `DELETE` instead of `GET`.
 *Note: For advanced usage, the verbs `CONNECT`, `HEAD`, `OPTIONS`, `PATCH` and `TRACE` are also supported.
 Use the appropriate named functions to access these verbs.*
 
-## Discovering supported verbs
+## Discovering allowed verbs
 
-If you need to find out whether a specific verb is supported by a given url you can use the `http.isAllowed`
+If you need to find out whether a specific verb is allowed by a given url you can use the `http.isAllowed`
 function as follows:
 
 ```javascript
