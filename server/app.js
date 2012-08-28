@@ -53,7 +53,7 @@ app.delete('/basicUsage/json', routes.basicUsage.json);
 
 app.post('/sendingData/json', routes.sendingData.postJson);
 
-app.get('/discoveringSupportedVerbs', routes.discoveringSupportedVerbs.get);
+app.get('/discoveringAllowedVerbs', routes.discoveringSupportedVerbs.get);
 
 app.get('/jsonp', function (req, res, next) {
   res.send((req.query['callback'] || req.query['jsonp']) + '(\'http.js\');');

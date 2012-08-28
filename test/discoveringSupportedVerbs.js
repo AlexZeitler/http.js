@@ -1,13 +1,13 @@
 suite('Discovering supported verbs', function () {
-  test('isAllowed GET /discoveringSupportedVerbs.', function (done) {
-    http.isAllowed('/discoveringSupportedVerbs', 'GET', function (isAllowed) {
+  test('Verify if GET is allowed.', function (done) {
+    http.isAllowed('/discoveringAllowedVerbs', 'GET', function (isAllowed) {
       expect(isAllowed).to.eql(true);
       done();
     });
   });
 
-  test('isAllowed POST /discoveringSupportedVerbs.', function (done) {
-    http.isAllowed('/discoveringSupportedVerbs', 'POST', function (isAllowed) {
+  test('Verify if POST is allowed.', function (done) {
+    http.isAllowed('/discoveringAllowedVerbs', 'POST', function (isAllowed) {
       expect(isAllowed).to.eql(false);
       done();
     });
