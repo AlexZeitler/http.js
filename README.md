@@ -177,7 +177,7 @@ http.js runs at least on the following browsers:
 
 - Desktop browsers
     - Chrome 15 and above
-    - Firefox 15 and above
+    - Firefox 3.5 and above
     - Internet Explorer 6 and above
     - Safari 5 and above
 - Mobile browsers
