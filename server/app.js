@@ -3,20 +3,10 @@ var express = require('express'),
     path = require('path'),
     passport = require('passport'),
     routes = require('./routes'),
-    BasicStrategy = require('passport-http').BasicStrategy,
-    DigestStrategy = require('passport-http').DigestStrategy;
+    BasicStrategy = require('passport-http').BasicStrategy;
 
 passport.use(new BasicStrategy({}, function (username, password, done) {
   return done(null, username === password);
-}));
-
-passport.use(new DigestStrategy({
-  qop: 'auth'
-}, function (username, done) {
-  var password = username;
-  return done(null, username, password);
-}, function (params, done) {
-  return done(null, true);
 }));
 
 var app = express();
@@ -60,6 +50,8 @@ app.get('/sendingHeaders/get', routes.sendingHeaders.get);
 app.get('/cachingRequests/get', routes.cachingRequests.get);
 
 app.get('/usingJsonp/text', routes.usingJsonp.text);
+
+app.get('/authenticatingRequests', passport.authenticate('basic', { session: false }), routes.authenticatingRequests.get);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

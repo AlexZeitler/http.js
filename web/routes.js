@@ -44,5 +44,11 @@ module.exports = {
     text: function (req, res, next) {
       res.send((req.query.callback || req.query.jsonp) + '(\'http.js\');');
     }
+  },
+
+  authenticatingRequests: {
+    get: function (req, res, next) {
+      res.send('http.js with HTTP Basic authentication')
+    }
   }
 };

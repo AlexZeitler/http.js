@@ -27,6 +27,65 @@
     return result.join('&');
   };
 
+  var utf8 = function (text) {
+    text = text.replace(/\r\n/g, '\n');
+    var result = '';
+
+    for(var i = 0; i < text.length; i++) {
+      var c = text.charCodeAt(i);
+
+      if(c < 128) {
+          result += String.fromCharCode(c);
+      } else if((c > 127) && (c < 2048)) {
+          result += String.fromCharCode((c >> 6) | 192);
+          result += String.fromCharCode((c & 63) | 128);
+      } else {
+          result += String.fromCharCode((c >> 12) | 224);
+          result += String.fromCharCode(((c >> 6) & 63) | 128);
+          result += String.fromCharCode((c & 63) | 128);
+      }
+    }
+
+    return result;
+  };
+
+  var base64 = function (text) {
+    var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+    text = utf8(text);
+    var result = '',
+        chr1, chr2, chr3,
+        enc1, enc2, enc3, enc4,
+        i = 0;
+
+    do {
+      chr1 = text.charCodeAt(i++);
+      chr2 = text.charCodeAt(i++);
+      chr3 = text.charCodeAt(i++);
+
+      enc1 = chr1 >> 2;
+      enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+      enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+      enc4 = chr3 & 63;
+
+      if(isNaN(chr2)) {
+        enc3 = enc4 = 64;
+      } else if(isNaN(chr3)) {
+        enc4 = 64;
+      }
+
+      result +=
+        keyStr.charAt(enc1) +
+        keyStr.charAt(enc2) +
+        keyStr.charAt(enc3) +
+        keyStr.charAt(enc4);
+      chr1 = chr2 = chr3 = '';
+      enc1 = enc2 = enc3 = enc4 = '';
+    } while(i < text.length);
+
+    return result;
+  }
+
   var ajax = function (method, url, options, callback) {
     if(typeof options === 'function') {
       callback = options;
@@ -115,6 +174,10 @@
   };
 
   var http = {
+    authBasic: function (username, password) {
+      ajax.headers['Authorization'] = 'Basic ' + base64(username + ':' + password);
+    },
+
     connect: function (url, options, callback) {
       return ajax('CONNECT', url, options, callback);      
     },
