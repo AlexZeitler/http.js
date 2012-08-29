@@ -169,7 +169,7 @@ Next, open a browser and redirect it to `http://localhost:3000`.
 Alternatively, you can run the tests remote - e.g. to test browsers on iPad, iPhone, ... For that redirect your
 browser to `http://httpjs.herokuapp.com`.
 
-http.js runs on the following browsers:
+http.js runs at least on the following browsers:
 
 - Desktop browsers
     - Chrome 15 and above
