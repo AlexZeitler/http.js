@@ -166,7 +166,7 @@ Next, open a browser and redirect it to `http://localhost:3000`.
 Alternatively, you can run the tests remote - e.g. to test browsers on iPad, iPhone, ... For that redirect your
 browser to `http://httpjs.herokuapp.com`.
 
-Tests have successfully been run on the following browser and OS combinations:
+http.js runs on the following browsers:
 
 - Desktop browsers
     - Chrome 15 and above
@@ -176,12 +176,6 @@ Tests have successfully been run on the following browser and OS combinations:
 - Mobile browsers
     - iPad Safari 5.1.1 and above
     - iPhone Safari 5.1.1 and above
-
-*Note: If a specific browser and OS combination is not listed, it does not mean that http.js does not work.
-It simply means that nobody has tested it yet.*
-
-You can support http.js by running the tests as described above on a browser and OS not listed yet, adding
-your findings to the `README.md` file and sending a pull request.
 
 That's it :-)!
 
