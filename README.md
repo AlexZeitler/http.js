@@ -26,12 +26,15 @@ If you are running Visual Studio, instead of downloading manually you can also i
 
 *Note: The NuGet package was created by [Alexander Zeitler](http://www.pdmlab.com). Thanks for that :-)!*
 
-As Internet Explorer 6 and 7 do not provide JSON functionality out of the box, you have to add a reference
-to [JSON3](https://github.com/bestiejs/json3) before referencing http.js:
+As some older browsers, such as Internet Explorer 6 and 7, do not provide JSON functionality out of the box,
+you have to add a reference to [JSON3](https://github.com/bestiejs/json3) before referencing http.js:
 
 ```html
 <script type="text/javascript" src="https://raw.github.com/bestiejs/json3/gh-pages/lib/json3.min.js"></script>
 ```
+
+As the JSON3 library won't do anything if not necessary, simply add a reference to it whether it is actually
+needed or not. That way you are on the safe side.
 
 ## Basic usage
 
@@ -188,8 +191,8 @@ http.js runs at least on the following browsers:
     - iPhone Safari 5.1.1 and above
     - iPhone Chrome 21 and above
 
-*Note: As Internet Explorer 6 and 7 do not provide JSON functionality out of the box, you have to add a reference
-to [JSON3](https://raw.github.com/bestiejs/json3/gh-pages/lib/json3.min.js) before referencing http.js.*
+*Note: As some older browsers, such as Internet Explorer 6 and 7, do not provide JSON functionality out of the
+box, you have to add a reference to [JSON3](https://github.com/bestiejs/json3) before referencing http.js.*
 
 That's it :-)!
 
