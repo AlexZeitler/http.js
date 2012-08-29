@@ -26,8 +26,12 @@ If you are running Visual Studio, instead of downloading manually you can also i
 
 *Note: The NuGet package was created by [Alexander Zeitler](http://www.pdmlab.com). Thanks for that :-)!*
 
-If you need to run http.js on Internet Explorer 6 or 7 you have to add a reference to
-[JSON3](https://raw.github.com/bestiejs/json3/gh-pages/lib/json3.min.js) before the reference to http.js.
+As Internet Explorer 6 and 7 do not provide JSON functionality out of the box, you have to add a reference
+to [JSON3](https://github.com/bestiejs/json3) before referencing http.js:
+
+```html
+<script type="text/javascript" src="https://raw.github.com/bestiejs/json3/gh-pages/lib/json3.min.js"></script>
+```
 
 ## Basic usage
 
