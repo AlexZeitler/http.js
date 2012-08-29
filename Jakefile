@@ -41,7 +41,7 @@ task('clean', function () {
   jake.rmRf(folder.build);
 });
 
-desc('Packages http.js.');
+desc('Packages http.js (remember to update version in current.json).');
 task('package', function () {
   jake.exec([
     'smoosh ./current.json',
