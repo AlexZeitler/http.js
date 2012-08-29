@@ -36,8 +36,6 @@
     options.cache = options.cache || false;
     options.data = options.data || {};
     options.headers = options.headers || {};
-    options.headers['accept'] = options.headers['accept'] || '*/*';
-    options.headers['content-type'] = options.headers['content-type'] || 'application/x-www-form-urlencoded;charset=UTF-8';
     options.jsonp = options.jsonp || false;
 
     var payload = encode(options.data);
@@ -71,11 +69,15 @@
     getXhr(function (err, xhr) {
       if(err) return callback(err);
 
-      if(ajax.auth) {
-        xhr.withCredentials = true;
-        xhr.open(method, url, true, ajax.auth.username, ajax.auth.password);        
-      } else {
-        xhr.open(method, url, true);
+      xhr.open(method, url, true);
+
+      xhr.setRequestHeader['accept'] = '*/*';
+      xhr.setRequestHeader['content-type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+
+      for(var header in ajax.headers) {
+        if(ajax.headers.hasOwnProperty(header)) {
+          xhr.setRequestHeader(header, ajax.headers[header]);
+        }
       }
 
       for(var header in options.headers) {
@@ -105,13 +107,6 @@
   };
 
   var http = {
-    auth: function (username, password) {
-      ajax.auth = {
-        username: username,
-        password: password
-      };
-    },
-
     connect: function (url, options, callback) {
       return ajax('CONNECT', url, options, callback);      
     },
@@ -126,6 +121,10 @@
 
     head: function (url, options, callback) {
       return ajax('HEAD', url, options, callback);
+    },
+
+    headers: function (headers) {
+      ajax.headers = headers || {};
     },
 
     isAllowed: function (url, verb, callback) {
