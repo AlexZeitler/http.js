@@ -168,14 +168,14 @@ browser to `http://httpjs.herokuapp.com`.
 
 Tests have successfully been run on the following browser and OS combinations:
 
-<table>
-  <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-  <tr><td>Chrome</td><td>21</td><td>21</td><td>15 &amp; 21</td></tr>
-  <tr><td>Firefox</td><td>14 &amp; 15</td><td>11, 13 &amp; 15</td><td>8 &amp; 15</td></tr>
-  <tr><td>Internet Explorer</td><td>8, 9 &amp; 10</td><td></td><td></td></tr>
-  <tr><td>Opera</td><td></td><td></td><td></td></tr>
-  <tr><td>Safari</td><td>5</td><td>6</td><td></td></tr>
-</table>
+- Desktop browsers
+    - Chrome 15 and above
+    - Firefox 15 and above
+    - Internet Explorer 8 and above
+    - Safari 5 and above
+
+- Mobile browsers
+    - iPhone Safari 5.1.1 and above
 
 *Note: If a specific browser and OS combination is not listed, it does not mean that http.js does not work.
 It simply means that nobody has tested it yet.*
