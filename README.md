@@ -176,10 +176,11 @@ browser to `http://httpjs.herokuapp.com`.
 http.js runs at least on the following browsers:
 
 - Desktop browsers
-    - Chrome 15 and above
+    - Chrome 3 and above
     - Firefox 3.5 and above
     - Internet Explorer 6 and above
-    - Safari 5 and above
+    - Opera 10.5 and above
+    - Safari 4 and above
 - Mobile browsers
     - Android Safari 4.0 and above
     - iPad Safari 5.1.1 and above
