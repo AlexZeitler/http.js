@@ -167,7 +167,19 @@ When specifying the `jsonp` property, no inline callback is needed as with the n
 
 ## Authenticating requests
 
-*Currently under development, stay tuned.*
+As some ressources are protected, http.js provides built-in authentication. At the moment, only HTTP
+Basic authentication is supported.
+
+To enable authentication for all subsequent requests you need to call the `http.authBasic` function
+and specify the user's credentials as parameters:
+
+```javascript
+http.auth('login', 'secret');
+```
+
+*Note: Be aware that HTTP Basic authentication sends the given credentials as plain-text. If you want
+to use it, force usage of the `https` protocol. Never use HTTP Basic authentication on a non-`https`
+connection.*
 
 ## Running the tests
 
