@@ -174,6 +174,7 @@ Tests have successfully been run on the following browser and OS combinations:
     - Internet Explorer 8 and above
     - Safari 5 and above
 - Mobile browsers
+    - iPad Safari 5.1.1 and above
     - iPhone Safari 5.1.1 and above
 
 *Note: If a specific browser and OS combination is not listed, it does not mean that http.js does not work.
