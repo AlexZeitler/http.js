@@ -122,7 +122,7 @@ function. This function allows you to define headers that are required on each r
 
 ```javascript
 http.headers({
-  sentBy: 'http.js'
+  'sentBy': 'http.js'
 });
 ```
 
