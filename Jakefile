@@ -3,7 +3,7 @@ var path = require('path'),
 
 var folder = {
   base: __dirname,
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'web')
 };
 
 var deployItems = [
@@ -50,10 +50,10 @@ task('package', function () {
 });
 
 desc('Deploys http.js to Heroku.')
-task('deploy', function () {
+task('deploy', [ 'rebuild' ], function () {
   jake.exec([
     // The subtree addin must be installed for this to work.
     // Get it from https://github.com/apenwarr/git-subtree
-    'git subtree push --prefix build heroku master'
+    'git subtree push --prefix web heroku master'
   ]);
 });
