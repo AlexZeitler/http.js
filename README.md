@@ -159,7 +159,7 @@ For that run:
 To run the tests, package and start a Node.js server using the following commands:
 
     $ jake
-    $ node build/app.js
+    $ node web/app.js
 
 Next, open a browser and redirect it to `http://localhost:3000`.
 
