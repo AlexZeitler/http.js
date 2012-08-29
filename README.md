@@ -168,7 +168,7 @@ Tests have successfully been run on the following browser and OS combinations:
   <tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
   <tr><td>Chrome</td><td>21</td><td>21</td><td>15 &amp; 21</td></tr>
   <tr><td>Firefox</td><td>14 &amp; 15</td><td>11, 13 &amp; 15</td><td>8 &amp; 15</td></tr>
-  <tr><td>Internet Explorer</td><td>9 &amp; 10</td><td></td><td></td></tr>
+  <tr><td>Internet Explorer</td><td>8, 9 &amp; 10</td><td></td><td></td></tr>
   <tr><td>Opera</td><td></td><td></td><td></td></tr>
   <tr><td>Safari</td><td>5</td><td>6</td><td></td></tr>
 </table>
