@@ -163,6 +163,9 @@ To run the tests, package and start a Node.js server using the following command
 
 Next, open a browser and redirect it to `http://localhost:3000`.
 
+Alternatively, you can run the tests remote - e.g. to test browsers on iPad, iPhone, ... For that redirect your
+browser to `http://httpjs.herokuapp.com`.
+
 Tests have successfully been run on the following browser and OS combinations:
 
 <table>
