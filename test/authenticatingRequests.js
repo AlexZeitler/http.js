@@ -1,6 +1,7 @@
 suite('Authenticating requests', function () {
   suite('GET', function () {
     test('Requesting with HTTP Basic returns protected resource.', function (done) {
+      http.authBasic('secret', 'secret');
       http.get('/authenticatingRequests', function (status, data) {
         expect({
           status: status,
