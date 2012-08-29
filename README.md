@@ -174,7 +174,7 @@ To enable authentication for all subsequent requests you need to call the `http.
 and specify the user's credentials as parameters:
 
 ```javascript
-http.auth('login', 'secret');
+http.authBasic('login', 'secret');
 ```
 
 *Note: Be aware that HTTP Basic authentication sends the given credentials as plain-text. If you want
