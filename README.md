@@ -117,6 +117,18 @@ headers: {
 }
 ```
 
+Occasionally there are headers that shall be sent on each request. For that you can use the `http.headers`
+function. This function allows you to define headers that are required on each request:
+
+```javascript
+http.headers({
+  sentBy: 'http.js'
+});
+```
+
+*Note: If a header was set using `http.headers` as well as using the `options` object, the `options`
+object takes precendence.*
+
 ## Caching requests
 
 Some browsers (i.e. Internet Explorer ;-)) tend to cache `GET` requests that return data with the
