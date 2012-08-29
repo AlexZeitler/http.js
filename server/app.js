@@ -31,7 +31,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(passport.initialize());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, '..')));
+  app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
