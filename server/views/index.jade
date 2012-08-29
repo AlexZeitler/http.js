@@ -15,7 +15,7 @@ html
     script(type='text/javascript', src='/scripts/mocha.js')
     script(type='text/javascript').
       mocha.setup({
-        globals: [ 'script*', 'verify' ],
+        ignoreLeaks: true,
         ui: 'tdd'
       });
     script(type='text/javascript', src='/test/basicUsage.js')
