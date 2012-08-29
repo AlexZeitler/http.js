@@ -43,7 +43,7 @@ http.get(url, function (status, data) {
 });
 ```
 
-Insted of `http.get` you can also use `http.post`, `http.put` and `http.delete` to send requests using the
+Instead of `http.get` you can also use `http.post`, `http.put` and `http.del` to send requests using the
 verbs `POST`, `PUT` and `DELETE` instead of `GET`.
 
 *Note: For advanced usage, the verbs `CONNECT`, `HEAD`, `OPTIONS`, `PATCH` and `TRACE` are also supported.

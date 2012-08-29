@@ -132,7 +132,7 @@ suite('Basic usage', function () {
 
   suite('DELETE', function () {
     test('Requesting text returns { 200, text }.', function (done) {
-      http.delete('/basicUsage/text', function (status, data) {
+      http.del('/basicUsage/text', function (status, data) {
         expect({
           status: status,
           data: data.text()
@@ -145,7 +145,7 @@ suite('Basic usage', function () {
     });
 
     test('Requesting JSON returns { 200, JSON }.', function (done) {
-      http.delete('/basicUsage/json', function (status, data) {
+      http.del('/basicUsage/json', function (status, data) {
         expect({
           status: status,
           data: data.json()
@@ -158,7 +158,7 @@ suite('Basic usage', function () {
     });    
 
     test('Requesting a non-existing resource returns 404.', function (done) {
-      http.delete('/nonExisting/text', function (status, data) {
+      http.del('/nonExisting/text', function (status, data) {
         expect(status).to.eql(404);
         done();
       });
