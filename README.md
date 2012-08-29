@@ -26,6 +26,9 @@ If you are running Visual Studio, instead of downloading manually you can also i
 
 *Note: The NuGet package was created by [Alexander Zeitler](http://www.pdmlab.com). Thanks for that :-)!*
 
+If you need to run http.js on Internet Explorer 6 or 7 you have to add a reference to
+[JSON3](https://raw.github.com/bestiejs/json3/gh-pages/lib/json3.min.js) before the reference to http.js.
+
 ## Basic usage
 
 Once you created the reference, you are able to use http.js. You access it by `http`, which is a global object
@@ -171,11 +174,17 @@ http.js runs on the following browsers:
 - Desktop browsers
     - Chrome 15 and above
     - Firefox 15 and above
-    - Internet Explorer 8 and above
+    - Internet Explorer 6 and above
     - Safari 5 and above
 - Mobile browsers
+    - Android Safari 4.0 and above
     - iPad Safari 5.1.1 and above
+    - iPad Chrome 21 and above
     - iPhone Safari 5.1.1 and above
+    - iPhone Chrome 21 and above
+
+*Note: As Internet Explorer 6 and 7 do not provide JSON functionality out of the box, you have to add a reference
+to [JSON3](https://raw.github.com/bestiejs/json3/gh-pages/lib/json3.min.js) before referencing http.js.*
 
 That's it :-)!
 
