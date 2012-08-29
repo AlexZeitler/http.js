@@ -173,7 +173,6 @@ Tests have successfully been run on the following browser and OS combinations:
     - Firefox 15 and above
     - Internet Explorer 8 and above
     - Safari 5 and above
-
 - Mobile browsers
     - iPhone Safari 5.1.1 and above
 
