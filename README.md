@@ -89,6 +89,9 @@ http.get(url, { data: { foo: 'bar' } }, function (status, data) {
 });
 ```
 
+*Note: If you want to send a nested object, you MUST set the content-type header to `application/json`,
+otherwise the object is serialized in a wrong format.*
+
 When doing a `GET` request, the `data` value is sent using the query string. With all other types of
 requests it is sent hidden inside the request body.
 
