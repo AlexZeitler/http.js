@@ -117,6 +117,9 @@ headers: {
 }
 ```
 
+*Note: If you set the content-type header to `application/json`, the `data` object will be encoded as
+JSON.*
+
 Occasionally there are headers that shall be sent on each request. For that you can use the `http.headers`
 function. This function allows you to define headers that are required on each request:
 

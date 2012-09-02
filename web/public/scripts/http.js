@@ -1,18 +1,22 @@
 (function (root) {
   var getXhr = function (callback) {
+    // Use the native XHR object if the browser supports it.
     if (window.XMLHttpRequest) {
       return callback(null, new XMLHttpRequest());
     } else if (window.ActiveXObject) {
+      // In Internet Explorer check for ActiveX versions of the XHR object.
       try {
         return callback(null, new ActiveXObject("Msxml2.XMLHTTP"));
       } catch (e) {
         return callback(null, new ActiveXObject("Microsoft.XMLHTTP"));
       }
     }
+
+    // If no XHR support was found, throw an error.
     return callback(new Error());
   };
 
-  var encode = function (data) {
+  var encodeUsingUrlEncoding = function (data) {
     if(typeof data === 'string') {
       return data;
     }
@@ -86,35 +90,77 @@
     return result;
   }
 
+  var mergeHeaders = function () {
+    // Use the first header object as base.
+    var result = arguments[0];
+
+    // Iterate through the remaining header objects and add them.
+    for(var i = 1; i < arguments.length; i++) {
+      var currentHeaders = arguments[i];
+      for(var header in currentHeaders) {
+        if(currentHeaders.hasOwnProperty(header)) {
+          result[header] = currentHeaders[header];
+        }
+      }
+    }
+
+    // Return the merged headers.
+    return result;
+  };
+
   var ajax = function (method, url, options, callback) {
+    // Adjust parameters.
     if(typeof options === 'function') {
       callback = options;
       options = {};
     }
 
+    // Set default parameter values.
     options.cache = options.cache || false;
     options.data = options.data || {};
     options.headers = options.headers || {};
     options.jsonp = options.jsonp || false;
 
-    var payload = encode(options.data);
+    // Merge the various header objects.
+    var headers = mergeHeaders({
+      'accept': '*/*',
+      'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    }, ajax.headers, options.headers);
+
+    // Encode the data according to the content-type.
+    var payload;
+    if (headers['content-type'] === 'application/json') {
+      payload = JSON.stringify(options.data);
+    } else {
+      payload = encodeUsingUrlEncoding(options.data);      
+    }
+
+    // Specially prepare GET requests: Setup the query string, handle caching and make a JSONP call
+    // if neccessary.
     if(method === 'GET') {
+      // Setup the query string.
       var queryString = [];
       if(payload) {
         queryString.push(payload);
         payload = null;
       }
 
+      // Handle caching.
       if(!options.cache) {
         queryString.push('_=' + (new Date()).getTime());
       }
+
+      // If neccessary prepare the query string for a JSONP call.
       if(options.jsonp) {
         queryString.push('callback=' + options.jsonp);
         queryString.push('jsonp=' + options.jsonp);
       }
+
+      // Merge the query string and attach it to the url.
       queryString = '?' + queryString.join('&');
       url += queryString !== '?' ? queryString : '';
 
+      // Make a JSONP call if neccessary.
       if(options.jsonp) {
         var head = document.getElementsByTagName('head')[0];
         var script = document.createElement('script');
@@ -125,38 +171,26 @@
       }
     }
 
+    // Since we got here, it is no JSONP request, so make a normal XHR request.
     getXhr(function (err, xhr) {
       if(err) return callback(err);
 
+      // Open the request.
       xhr.open(method, url, true);
 
-      var headers = {
-        'accept': '*/*',
-        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      };
-
-      for(var header in ajax.headers) {
-        if(ajax.headers.hasOwnProperty(header)) {
-          headers[header] = ajax.headers[header];
-        }
-      }
-
-      for(var header in options.headers) {
-        if(options.headers.hasOwnProperty(header)) {
-          headers[header] = options.headers[header];
-        }
-      }
-
+      // Set the request headers.
       for(var header in headers) {
         if(headers.hasOwnProperty(header)) {
           xhr.setRequestHeader(header, headers[header]);
         }
       }
 
+      // Handle the request events.
       xhr.onreadystatechange = function () {
         if(xhr.readyState === 4) {
           var data = xhr.responseText || '';
 
+          // Return an object that provides access to the data as text and JSON.
           callback(xhr.status, {
             text: function () {
               return data;
@@ -169,10 +203,12 @@
         }
       };
 
+      // Actually send the XHR request.
       xhr.send(payload);
     });
   };
 
+  // Define the external interface.
   var http = {
     authBasic: function (username, password) {
       ajax.headers['Authorization'] = 'Basic ' + base64(username + ':' + password);
