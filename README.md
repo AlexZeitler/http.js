@@ -220,6 +220,7 @@ http.js runs at least on the following browsers:
     - iPad Chrome 21 and above
     - iPhone Safari 5.1.1 and above
     - iPhone Chrome 21 and above
+    - Windows Phone Internet Explorer 9 and above
 
 *Note: As some older browsers, such as Internet Explorer 6 and 7, do not provide JSON functionality out of the
 box, you have to add a reference to [JSON3](https://github.com/bestiejs/json3) before referencing http.js.*
