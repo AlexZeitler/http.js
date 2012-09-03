@@ -190,6 +190,11 @@
         if(xhr.readyState === 4) {
           var data = xhr.responseText || '';
 
+          // If no callback is given, return.
+          if(!callback) {
+            return;
+          }
+
           // Return an object that provides access to the data as text and JSON.
           callback(xhr.status, {
             text: function () {
