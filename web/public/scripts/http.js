@@ -202,11 +202,10 @@
 
             json: function () {
               return JSON.parse(data);
-            },
-
-            header: function(header) {
-              return xhr.getResponseHeader(header);
             }
+          },
+          function(header) {
+            return xhr.getResponseHeader(header);
           });
         }
       };

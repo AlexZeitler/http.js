@@ -5,7 +5,7 @@ suite('Basic usage', function () {
         expect({
           status: status,
           data: data.text(),
-          header: data.header('Content-Type')
+          header: header('Content-Type')
         }).to.eql({
           status: 200,
           data: 'http.js',
@@ -16,11 +16,11 @@ suite('Basic usage', function () {
     });
 
     test('Requesting JSON returns { 200, JSON, application/json; charset=utf-8 }.', function (done) {
-      http.get('/basicUsage/json', function (status, data) {
+      http.get('/basicUsage/json', function (status, data, header) {
         expect({
           status: status,
           data: data.json(),
-          header: data.header('Content-Type')
+          header: header('Content-Type')
         }).to.eql({
           status: 200,
           data: { name: 'http.js' },
