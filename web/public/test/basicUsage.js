@@ -1,13 +1,15 @@
 suite('Basic usage', function () {
   suite('GET', function () {
-    test('Requesting text returns { 200, text }.', function (done) {
-      http.get('/basicUsage/text', function (status, data) {
+    test('Requesting text returns { 200, text, text/html; charset=utf-8 }.', function (done) {
+      http.get('/basicUsage/text', function (status, data, header) {
         expect({
           status: status,
-          data: data.text()
+          data: data.text(),
+          header: data.header('Content-Type')
         }).to.eql({
           status: 200,
-          data: 'http.js'
+          data: 'http.js',
+          header: 'text/html; charset=utf-8'
         });
         done();
       });
