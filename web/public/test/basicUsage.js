@@ -15,14 +15,16 @@ suite('Basic usage', function () {
       });
     });
 
-    test('Requesting JSON returns { 200, JSON }.', function (done) {
+    test('Requesting JSON returns { 200, JSON, application/json; charset=utf-8 }.', function (done) {
       http.get('/basicUsage/json', function (status, data) {
         expect({
           status: status,
-          data: data.json()
+          data: data.json(),
+          header: data.header('Content-Type')
         }).to.eql({
           status: 200,
-          data: { name: 'http.js' }
+          data: { name: 'http.js' },
+          header: 'application/json; charset=utf-8'
         });
         done();
       });
