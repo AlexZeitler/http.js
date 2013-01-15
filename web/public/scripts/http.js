@@ -189,6 +189,7 @@
       xhr.onreadystatechange = function () {
         if(xhr.readyState === 4) {
           var data = xhr.responseText || '';
+
           // If no callback is given, return.
           if(!callback) {
             return;
@@ -205,7 +206,7 @@
             }
           },
           function(header) {
-            return xhr.getResponseHeader(header);
+              return xhr.getResponseHeader(header);
           });
         }
       };
