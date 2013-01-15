@@ -2,6 +2,8 @@
 
 http.js provides AJAX functionality for the browser.
 
+If you have any questions or feedback, feel free to contact me using [@goloroden](https://twitter.com/goloroden) on Twitter.
+
 ## Installing
 
 Basically, using http.js is easy. All you need to do is add a script reference within your web site. If you want
