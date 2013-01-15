@@ -137,6 +137,15 @@ http.headers({
 *Note: If a header was set using `http.headers` as well as using the `options` object, the `options`
 object takes precendence.*
 
+## Receiving headers
+If you want to evaluate response headers, you can access them using the header parameter in the callback.
+
+```javascript
+http.get(url, function (status, data, header) {
+  console.log(header('Content-Type'));
+});
+```
+
 ## Caching requests
 
 Some browsers (i.e. Internet Explorer ;-)) tend to cache `GET` requests that return data with the
