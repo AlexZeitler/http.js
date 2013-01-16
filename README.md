@@ -2,7 +2,7 @@
 
 http.js provides AJAX functionality for the browser.
 
-If you have any questions or feedback, feel free to contact me using [@goloroden](https://twitter.com/goloroden) on Twitter.
+If you have any questions or feedback, feel free to contact us using [@goloroden](https://twitter.com/goloroden) or [@alexzeitler](https://twitter.com/alexzeitler) on Twitter.
 
 ## Installing
 
@@ -241,7 +241,7 @@ That's it :-)!
 ## License
 
 The MIT License (MIT)
-Copyright (c) 2012 Golo Roden.
+Copyright (c) 2012 - 2013 Golo Roden & Alexander Zeitler.
  
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  
