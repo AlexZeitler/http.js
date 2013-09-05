@@ -1,0 +1,23 @@
+{
+  "name": "http.js",
+  "version": "0.0.6",
+  "homepage": "https://github.com/goloroden/httpjs",
+  "authors": [
+    "Golo Roden",
+    "Alexander Zeitler"
+  ],
+  "description": "http.js provides AJAX functionality for the browser.",
+  "main": "lib/http.js",
+  "keywords": [
+    "http",
+    "ajax"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
